@@ -12,17 +12,42 @@
 - **Configurable via YAML**: All credentials (SSH and SNMP) are managed through a YAML configuration file (`creds.yaml`).
 - **Logging and Error Handling**: Detailed logging for easier troubleshooting, with graceful error handling and retry mechanisms.
 
+![Description](https://raw.githubusercontent.com/scottpeterman/pynetweaver/refs/heads/main/slides/bfs_arista2.gif)
+
+## Sample Search Application
+- **search2.py** - A sample search engine for loading the result discovery json files. Not production safe, has no security, but if run locally is usefull
+![Description](https://raw.githubusercontent.com/scottpeterman/pynetweaver/refs/heads/main/slides/14.png)
+
+
 ## Project Structure
 
 ```
-pynetweaver/
-├── compiled_mibs/           # Directory for pre-compiled MIBs
-├── templates/               # TTP parsing templates for various commands
-├── creds.yaml               # YAML file for storing SSH and SNMP credentials
-├── network_discovery.log    # Log file for discovery process
-├── ds2_network_discovery.json # Default JSON output file for collected data
-├── network_discovery_summary.csv # Default CSV summary file
+.
+├── BFS
+├── PySSHPass
+│   ├── __pycache__
+│   └── helpers
+├── map_generator
+│   ├── __pycache__
+│   └── templates
+├── pynetweaver_data
+├── pyssh_log
+├── slides
+├── static
+│   └── js
+├── templates
+│   ├── arp
+│   ├── cdp-detail
+│   ├── int-status
+│   ├── inventory
+│   ├── lldp-detail
+│   ├── mac
+│   └── version
+└── usa_project
+    └── usa-rtr-1
+        └── map
 ├── pynw_cli.py              # Main application script
+├── search2.py               # Example search flask application script
 ├── README.md                # Project documentation (this file)
 ```
 
