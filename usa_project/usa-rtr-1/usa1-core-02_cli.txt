@@ -1,0 +1,61 @@
+-------------------------
+Device ID: usa1-core-01.home.com
+Entry address(es): 
+  IP address: 172.16.101.1
+Platform: Cisco ,  Capabilities: Router Switch IGMP 
+Interface: GigabitEthernet0/1,  Port ID (outgoing port): GigabitEthernet0/1
+Holdtime : 145 sec
+
+Version :
+Cisco IOS Software, vios_l2 Software (vios_l2-ADVENTERPRISEK9-M), Version 15.2(4.0.55)E, TEST ENGINEERING ESTG_WEEKLY BUILD, synced to  END_OF_FLO_ISP
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2015 by Cisco Systems, Inc.
+Compiled Tue 28-Jul-15 18:52 by sasyamal
+
+advertisement version: 2
+VTP Management Domain: ''
+Native VLAN: 1
+Duplex: half
+Management address(es): 
+  IP address: 172.16.101.1
+
+-------------------------
+Device ID: usa1-access-02.home.com
+Entry address(es): 
+  IP address: 172.16.101.4
+Platform: Cisco ,  Capabilities: Router Switch IGMP 
+Interface: GigabitEthernet0/2,  Port ID (outgoing port): GigabitEthernet0/0
+Holdtime : 137 sec
+
+Version :
+Cisco IOS Software, vios_l2 Software (vios_l2-ADVENTERPRISEK9-M), Version 15.2(4.0.55)E, TEST ENGINEERING ESTG_WEEKLY BUILD, synced to  END_OF_FLO_ISP
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2015 by Cisco Systems, Inc.
+Compiled Tue 28-Jul-15 18:52 by sasyamal
+
+advertisement version: 2
+VTP Management Domain: ''
+Native VLAN: 1
+Duplex: half
+Management address(es): 
+  IP address: 172.16.101.4
+
+-------------------------
+Device ID: usa1-rtr-1.home.com
+Entry address(es): 
+  IP address: 172.16.128.1
+Platform: Cisco 7206VXR,  Capabilities: Router 
+Interface: GigabitEthernet0/0,  Port ID (outgoing port): Ethernet1/2
+Holdtime : 122 sec
+
+Version :
+Cisco IOS Software, 7200 Software (C7200-ADVENTERPRISEK9-M), Version 15.2(4)M11, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2016 by Cisco Systems, Inc.
+Compiled Sun 16-Oct-16 07:53 by prod_rel_team
+
+advertisement version: 2
+Duplex: half
+
+
+Total cdp entries displayed : 3

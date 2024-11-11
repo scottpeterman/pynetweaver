@@ -1,0 +1,1 @@
+Cisco {{ os_family | ORPHRASE }} ({{platform}}), Version {{os_version | __line__ }}, {{build | ORPHRASE}}, {{ not_used | ORPHRASE }}

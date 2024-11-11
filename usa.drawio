@@ -1,0 +1,258 @@
+<mxfile compressed="false" host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.5 Chrome/126.0.6478.183 Electron/31.3.0 Safari/537.36" version="24.7.5">
+  <diagram id="Page-1" name="Page-1">
+    <mxGraphModel dx="1346" dy="874" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object label="usa1-rtr-1" id="usa1-rtr-1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="1" vertex="1">
+            <mxGeometry x="413" y="460" width="120" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="usa1-core-02" id="usa1-core-02">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="1" vertex="1">
+            <mxGeometry x="690" y="710" width="120" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="usa1-core-01" id="usa1-core-01">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="1" vertex="1">
+            <mxGeometry x="180" y="710" width="120" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="usa2-rtr-1" id="usa2-rtr-1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="1" vertex="1">
+            <mxGeometry x="413" y="250" width="120" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="usa1-access-02" id="usa1-access-02">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="1" vertex="1">
+            <mxGeometry x="450" y="930" width="120" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="usa2-core-01" id="usa2-core-01">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="1" vertex="1">
+            <mxGeometry x="740" y="250" width="120" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="usa2-core-02" id="usa2-core-02">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="1" vertex="1">
+            <mxGeometry x="740" y="440" width="120" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="usa2-access-02" id="usa2-access-02">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="1" vertex="1">
+            <mxGeometry x="1106" y="440" width="120" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="" src_label="Ethernet1/2" trgt_label="GigabitEthernet0/0" source="usa1-rtr-1" target="usa1-core-02" id="1e6eff4d313efe3f1a580b22188afb8f">
+          <mxCell style="endArrow=none;labelBackgroundColor=none;strokeColor=#788AA3;fontColor=default;" parent="1" source="usa1-rtr-1" target="usa1-core-02" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="1e6eff4d313efe3f1a580b22188afb8f-src" value="Ethernet1/2" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="1e6eff4d313efe3f1a580b22188afb8f" vertex="1" connectable="0">
+          <mxGeometry x="-0.5" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1e6eff4d313efe3f1a580b22188afb8f-trgt" value="GigabitEthernet0/0" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="1e6eff4d313efe3f1a580b22188afb8f" vertex="1" connectable="0">
+          <mxGeometry x="0.5" relative="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <object label="" src_label="Ethernet2/0" trgt_label="GigabitEthernet0/0" source="usa1-rtr-1" target="usa1-core-01" id="955916b2acb12858fe7bfd3847b2b75b">
+          <mxCell style="endArrow=none;labelBackgroundColor=none;strokeColor=#788AA3;fontColor=default;" parent="1" source="usa1-rtr-1" target="usa1-core-01" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="955916b2acb12858fe7bfd3847b2b75b-src" value="Ethernet2/0" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="955916b2acb12858fe7bfd3847b2b75b" vertex="1" connectable="0">
+          <mxGeometry x="-0.5" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="955916b2acb12858fe7bfd3847b2b75b-trgt" value="GigabitEthernet0/0" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="955916b2acb12858fe7bfd3847b2b75b" vertex="1" connectable="0">
+          <mxGeometry x="0.5" relative="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <object label="" src_label="Ethernet1/1" trgt_label="Ethernet1/1" source="usa1-rtr-1" target="usa2-rtr-1" id="34cca8c1364a9ca6bc73777175578299">
+          <mxCell style="endArrow=none;labelBackgroundColor=none;strokeColor=#788AA3;fontColor=default;" parent="1" source="usa1-rtr-1" target="usa2-rtr-1" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="520" y="380" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <mxCell id="34cca8c1364a9ca6bc73777175578299-src" value="Ethernet1/1" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="34cca8c1364a9ca6bc73777175578299" vertex="1" connectable="0">
+          <mxGeometry x="-0.5" relative="1" as="geometry">
+            <mxPoint x="8" y="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="34cca8c1364a9ca6bc73777175578299-trgt" value="Ethernet1/1" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="34cca8c1364a9ca6bc73777175578299" vertex="1" connectable="0">
+          <mxGeometry x="0.5" relative="-1" as="geometry">
+            <mxPoint x="16" y="13" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <object label="" src_label="Ethernet1/0" trgt_label="Ethernet1/0" source="usa1-rtr-1" target="usa2-rtr-1" id="89c3e1e1c2533ee066c22c265808adcd">
+          <mxCell style="endArrow=none;labelBackgroundColor=none;strokeColor=#788AA3;fontColor=default;" parent="1" source="usa1-rtr-1" target="usa2-rtr-1" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="430" y="380" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <mxCell id="89c3e1e1c2533ee066c22c265808adcd-src" value="Ethernet1/0" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="89c3e1e1c2533ee066c22c265808adcd" vertex="1" connectable="0">
+          <mxGeometry x="-0.5" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="89c3e1e1c2533ee066c22c265808adcd-trgt" value="Ethernet1/0" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="89c3e1e1c2533ee066c22c265808adcd" vertex="1" connectable="0">
+          <mxGeometry x="0.5" relative="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <object label="" src_label="GigabitEthernet0/1" trgt_label="GigabitEthernet0/1" source="usa1-core-02" target="usa1-core-01" id="a3058f44f80790b84903f5c8bcc3cae5">
+          <mxCell style="endArrow=none;labelBackgroundColor=none;strokeColor=#788AA3;fontColor=default;" parent="1" source="usa1-core-02" target="usa1-core-01" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="a3058f44f80790b84903f5c8bcc3cae5-src" value="GigabitEthernet0/1" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="a3058f44f80790b84903f5c8bcc3cae5" vertex="1" connectable="0">
+          <mxGeometry x="-0.5" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a3058f44f80790b84903f5c8bcc3cae5-trgt" value="GigabitEthernet0/1" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="a3058f44f80790b84903f5c8bcc3cae5" vertex="1" connectable="0">
+          <mxGeometry x="0.5" relative="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <object label="" src_label="GigabitEthernet0/2" trgt_label="GigabitEthernet0/0" source="usa1-core-02" target="usa1-access-02" id="a376e61307fcd95261149c2f4e7298e9">
+          <mxCell style="endArrow=none;labelBackgroundColor=none;strokeColor=#788AA3;fontColor=default;" parent="1" source="usa1-core-02" target="usa1-access-02" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="a376e61307fcd95261149c2f4e7298e9-src" value="GigabitEthernet0/2" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="a376e61307fcd95261149c2f4e7298e9" vertex="1" connectable="0">
+          <mxGeometry x="-0.5" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a376e61307fcd95261149c2f4e7298e9-trgt" value="GigabitEthernet0/0" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="a376e61307fcd95261149c2f4e7298e9" vertex="1" connectable="0">
+          <mxGeometry x="0.5" relative="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <object label="" src_label="GigabitEthernet0/3" trgt_label="GigabitEthernet0/2" source="usa1-core-01" target="usa1-access-02" id="feef260969f2fa9067b32555697f3b94">
+          <mxCell style="endArrow=none;labelBackgroundColor=none;strokeColor=#788AA3;fontColor=default;" parent="1" source="usa1-core-01" target="usa1-access-02" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="feef260969f2fa9067b32555697f3b94-src" value="GigabitEthernet0/3" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="feef260969f2fa9067b32555697f3b94" vertex="1" connectable="0">
+          <mxGeometry x="-0.5" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="feef260969f2fa9067b32555697f3b94-trgt" value="GigabitEthernet0/2" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="feef260969f2fa9067b32555697f3b94" vertex="1" connectable="0">
+          <mxGeometry x="0.5" relative="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <object label="" src_label="Ethernet1/2" trgt_label="GigabitEthernet0/0" source="usa2-rtr-1" target="usa2-core-01" id="e556df718437d84d3f0973b054d60486">
+          <mxCell style="endArrow=none;labelBackgroundColor=none;strokeColor=#788AA3;fontColor=default;" parent="1" source="usa2-rtr-1" target="usa2-core-01" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="e556df718437d84d3f0973b054d60486-src" value="Ethernet1/2" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="e556df718437d84d3f0973b054d60486" vertex="1" connectable="0">
+          <mxGeometry x="-0.5" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e556df718437d84d3f0973b054d60486-trgt" value="GigabitEthernet0/0" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="e556df718437d84d3f0973b054d60486" vertex="1" connectable="0">
+          <mxGeometry x="0.5" relative="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <object label="" src_label="GigabitEthernet0/1" trgt_label="GigabitEthernet0/0" source="usa2-core-01" target="usa2-core-02" id="008165bbfbafd85838e5f377154b9a4d">
+          <mxCell style="endArrow=none;labelBackgroundColor=none;strokeColor=#788AA3;fontColor=default;" parent="1" source="usa2-core-01" target="usa2-core-02" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="008165bbfbafd85838e5f377154b9a4d-src" value="GigabitEthernet0/1" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="008165bbfbafd85838e5f377154b9a4d" vertex="1" connectable="0">
+          <mxGeometry x="-0.5" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="008165bbfbafd85838e5f377154b9a4d-trgt" value="GigabitEthernet0/0" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="008165bbfbafd85838e5f377154b9a4d" vertex="1" connectable="0">
+          <mxGeometry x="0.5" relative="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <object label="" src_label="GigabitEthernet0/3" trgt_label="GigabitEthernet0/0" source="usa2-core-01" target="usa2-access-02" id="f8374eb2e926680f8aa4aa1f58d4e3dd">
+          <mxCell style="endArrow=none;labelBackgroundColor=none;strokeColor=#788AA3;fontColor=default;" parent="1" source="usa2-core-01" target="usa2-access-02" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="f8374eb2e926680f8aa4aa1f58d4e3dd-src" value="GigabitEthernet0/3" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="f8374eb2e926680f8aa4aa1f58d4e3dd" vertex="1" connectable="0">
+          <mxGeometry x="-0.5" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f8374eb2e926680f8aa4aa1f58d4e3dd-trgt" value="GigabitEthernet0/0" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="f8374eb2e926680f8aa4aa1f58d4e3dd" vertex="1" connectable="0">
+          <mxGeometry x="0.5" relative="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <object label="usa2-access-01" id="usa2-access-01">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="1" vertex="1">
+            <mxGeometry x="1100" y="250" width="120" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="" src_label="GigabitEthernet0/2" trgt_label="GigabitEthernet0/0" source="usa2-core-01" target="usa2-access-01" id="480fdc0da685e898352a2eb8c0d83666">
+          <mxCell style="endArrow=none;labelBackgroundColor=none;strokeColor=#788AA3;fontColor=default;" parent="1" source="usa2-core-01" target="usa2-access-01" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="480fdc0da685e898352a2eb8c0d83666-src" value="GigabitEthernet0/2" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="480fdc0da685e898352a2eb8c0d83666" vertex="1" connectable="0">
+          <mxGeometry x="-0.5" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="480fdc0da685e898352a2eb8c0d83666-trgt" value="GigabitEthernet0/0" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="480fdc0da685e898352a2eb8c0d83666" vertex="1" connectable="0">
+          <mxGeometry x="0.5" relative="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <object label="" src_label="GigabitEthernet0/2" trgt_label="GigabitEthernet0/1" source="usa2-core-02" target="usa2-access-02" id="02a0a161dc8bbc81648e8c02a2c61367">
+          <mxCell style="endArrow=none;labelBackgroundColor=none;strokeColor=#788AA3;fontColor=default;" parent="1" source="usa2-core-02" target="usa2-access-02" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="02a0a161dc8bbc81648e8c02a2c61367-src" value="GigabitEthernet0/2" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="02a0a161dc8bbc81648e8c02a2c61367" vertex="1" connectable="0">
+          <mxGeometry x="-0.5" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="02a0a161dc8bbc81648e8c02a2c61367-trgt" value="GigabitEthernet0/1" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="02a0a161dc8bbc81648e8c02a2c61367" vertex="1" connectable="0">
+          <mxGeometry x="0.5" relative="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <object label="" src_label="GigabitEthernet0/1" trgt_label="GigabitEthernet0/1" source="usa2-core-02" target="usa2-access-01" id="2b77475949cbc386802dfbdfe967bd42">
+          <mxCell style="endArrow=none;labelBackgroundColor=none;strokeColor=#788AA3;fontColor=default;" parent="1" source="usa2-core-02" target="usa2-access-01" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="2b77475949cbc386802dfbdfe967bd42-src" value="GigabitEthernet0/1" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="2b77475949cbc386802dfbdfe967bd42" vertex="1" connectable="0">
+          <mxGeometry x="-0.5" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2b77475949cbc386802dfbdfe967bd42-trgt" value="GigabitEthernet0/1" style="labelBackgroundColor=none;;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" parent="2b77475949cbc386802dfbdfe967bd42" vertex="1" connectable="0">
+          <mxGeometry x="0.5" relative="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

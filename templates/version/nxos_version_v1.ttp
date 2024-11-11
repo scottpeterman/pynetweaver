@@ -1,0 +1,17 @@
+<vars>
+platform_value = ""
+</vars>
+
+<macro>
+def save_platform(data):
+    global platform_value
+    platform_value = data["model"]
+    data["platform"] = platform_value  # Add platform directly in the save_platform macro
+    return data
+</macro>
+
+<group macro="save_platform">
+ NXOS: version {{ os_version }}
+  cisco {{ model | ORPHRASE }}
+  Processor Board ID {{ serial_number }}
+</group>

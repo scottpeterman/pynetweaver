@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Network Topology with Interfaces</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+  th {
+    background-color: #f0f0f0;
+  }
+  input[type="text"] {
+    width: 90%;
+    padding: 4px;
+  }
+  button {
+    margin-right: 10px;
+    padding: 8px 16px;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #187bcd;
+  }
+  svg {
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 600px;
+    background-color: #f8f9fa;
+  }
+  .interface-label {
+    font-size: 12px;
+    pointer-events: none;
+  }
+  .edge {
+    stroke: #999;
+    stroke-width: 2;
+  }
+  .edge-highlight {
+    stroke: #22c55e;
+    stroke-width: 3;
+  }
+  .node-label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .status {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<h2>Define Network Topology with Interfaces</h2>
+<div class="status" id="status">Ready to start</div>
+<table id="connectionsTable">
+  <tr>
+    <th>Node</th>
+    <th>Interface</th>
+    <th>Connected To</th>
+    <th>Remote Interface</th>
+    <th>Actions</th>
+  </tr>
+</table>
+<button id="addRow">Add Row</button>
+<button id="generateGraph">Generate Graph</button>
+<button id="nextStep">Next Step</button>
+<button id="reset">Reset</button>
+
+<h2>Network Diagram</h2>
+<svg id="networkGraph"></svg>
+
+<script>
+let graph = {};
+let queue = [];
+let visited = new Set();
+let currentNode = null;
+let edges = new Set();
+
+// Add a new row for user input
+document.getElementById('addRow').addEventListener('click', () => {
+  addTableRow();
+});
+
+function addTableRow(node = '', interface = '', connectedTo = '', remoteInterface = '') {
+  const table = document.getElementById('connectionsTable');
+  const row = table.insertRow();
+  row.innerHTML = `
+    <td><input type="text" value="${node}" placeholder="Node" /></td>
+    <td><input type="text" value="${interface}" placeholder="Interface" /></td>
+    <td><input type="text" value="${connectedTo}" placeholder="Connected Node" /></td>
+    <td><input type="text" value="${remoteInterface}" placeholder="Remote Interface" /></td>
+    <td><button onclick="deleteRow(this)">Delete</button></td>
+  `;
+}
+
+function deleteRow(btn) {
+  const row = btn.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+}
+
+// Parse the table input and generate the graph
+document.getElementById('generateGraph').addEventListener('click', () => {
+  graph = {};
+  queue = [];
+  visited = new Set();
+  edges = new Set();
+  currentNode = null;
+
+  const table = document.getElementById('connectionsTable');
+
+  // Parse table data and create bidirectional connections
+  for (let i = 1; i < table.rows.length; i++) {
+    const inputs = table.rows[i].getElementsByTagName('input');
+    const node = inputs[0].value.trim();
+    const interface = inputs[1].value.trim();
+    const connectedNode = inputs[2].value.trim();
+    const remoteInterface = inputs[3].value.trim();
+
+    if (node && connectedNode) {
+      // Add forward connection
+      if (!graph[node]) graph[node] = [];
+      graph[node].push({ interface, connectedNode, remoteInterface });
+
+      // Add reverse connection
+      if (!graph[connectedNode]) graph[connectedNode] = [];
+      graph[connectedNode].push({ interface: remoteInterface, connectedNode: node, remoteInterface: interface });
+
+      // Add edge to set
+      edges.add(`${node}-${connectedNode}`);
+    }
+  }
+
+  resetGraph();
+  startTraversal();
+  updateStatus('Graph generated. Click Next Step to begin traversal.');
+});
+
+function updateStatus(message) {
+  document.getElementById('status').textContent = message;
+}
+
+// Step through the BFS traversal
+document.getElementById('nextStep').addEventListener('click', () => {
+  if (queue.length > 0) {
+    bfsStep();
+  } else if (visited.size > 0) {
+    updateStatus('Traversal complete!');
+  }
+});
+
+document.getElementById('reset').addEventListener('click', () => {
+  resetGraph();
+  startTraversal();
+});
+
+function startTraversal() {
+  const startNode = Object.keys(graph)[0];
+  if (startNode) {
+    queue = [startNode];
+    visited = new Set([startNode]);
+    highlightNode(startNode, 'yellow');
+    updateStatus(`Starting traversal from node ${startNode}`);
+  }
+}
+
+function bfsStep() {
+  if (queue.length === 0) return;
+
+  const node = queue.shift();
+  currentNode = node;
+  highlightNode(node, '#22c55e'); // Green
+
+  const neighbors = graph[node] || [];
+  neighbors.forEach(({ interface, connectedNode, remoteInterface }) => {
+    if (!visited.has(connectedNode)) {
+      queue.push(connectedNode);
+      visited.add(connectedNode);
+      highlightNode(connectedNode, 'yellow');
+      highlightEdge(node, connectedNode, true);
+      updateStatus(`Discovered ${connectedNode} via ${node} (${interface} ↔ ${remoteInterface})`);
+    }
+  });
+}
+
+function resetGraph() {
+  const svg = document.getElementById('networkGraph');
+  svg.innerHTML = '';
+  renderGraph();
+  visited = new Set();
+  queue = [];
+  updateStatus('Graph reset. Ready to start traversal.');
+}
+
+function renderGraph() {
+  const svg = document.getElementById('networkGraph');
+  const nodes = Object.keys(graph);
+  const positions = {};
+
+  // Calculate node positions using a force-directed-like layout
+  const centerX = svg.clientWidth / 2;
+  const centerY = svg.clientHeight / 2;
+  const radius = Math.min(centerX, centerY) * 0.8;
+
+  nodes.forEach((node, i) => {
+    const angle = (i * 2 * Math.PI / nodes.length) - Math.PI / 2;
+    positions[node] = {
+      x: centerX + radius * Math.cos(angle),
+      y: centerY + radius * Math.sin(angle)
+    };
+  });
+
+  // Draw edges first (so they're behind nodes)
+  nodes.forEach(node => {
+    const connections = graph[node] || [];
+    connections.forEach(({ interface, connectedNode, remoteInterface }) => {
+      if (positions[connectedNode] && edges.has(`${node}-${connectedNode}`)) {
+        // Remove the edge from the set so we don't draw it twice
+        edges.delete(`${node}-${connectedNode}`);
+        edges.delete(`${connectedNode}-${node}`);
+
+        // Draw edge
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('id', `edge-${node}-${connectedNode}`);
+        line.setAttribute('x1', positions[node].x);
+        line.setAttribute('y1', positions[node].y);
+        line.setAttribute('x2', positions[connectedNode].x);
+        line.setAttribute('y2', positions[connectedNode].y);
+        line.setAttribute('class', 'edge');
+        svg.appendChild(line);
+
+        // Add interface labels
+        const midX = (positions[node].x + positions[connectedNode].x) / 2;
+        const midY = (positions[node].y + positions[connectedNode].y) / 2;
+        const angle = Math.atan2(positions[connectedNode].y - positions[node].y,
+                               positions[connectedNode].x - positions[node].x);
+
+        // Offset the labels slightly above and below the line
+        const offset = 15;
+        const label1 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label1.setAttribute('x', midX);
+        label1.setAttribute('y', midY - offset);
+        label1.setAttribute('text-anchor', 'middle');
+        label1.setAttribute('class', 'interface-label');
+        label1.textContent = interface;
+
+        const label2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label2.setAttribute('x', midX);
+        label2.setAttribute('y', midY + offset);
+        label2.setAttribute('text-anchor', 'middle');
+        label2.setAttribute('class', 'interface-label');
+        label2.textContent = remoteInterface;
+
+        svg.appendChild(label1);
+        svg.appendChild(label2);
+      }
+    });
+  });
+
+  // Draw nodes
+  nodes.forEach(node => {
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('id', `node-${node}`);
+    circle.setAttribute('cx', positions[node].x);
+    circle.setAttribute('cy', positions[node].y);
+    circle.setAttribute('r', 25);
+    circle.setAttribute('fill', '#1e90ff');
+    circle.setAttribute('stroke', '#000');
+    circle.setAttribute('stroke-width', '2');
+
+    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    text.setAttribute('x', positions[node].x);
+    text.setAttribute('y', positions[node].y);
+    text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('dominant-baseline', 'middle');
+    text.setAttribute('fill', '#fff');
+    text.setAttribute('class', 'node-label');
+    text.textContent = node;
+
+    g.appendChild(circle);
+    g.appendChild(text);
+    svg.appendChild(g);
+  });
+}
+
+function highlightNode(node, color) {
+  const circle = document.getElementById(`node-${node}`);
+  if (circle) {
+    circle.setAttribute('fill', color);
+  }
+}
+
+function highlightEdge(node1, node2, highlight) {
+  const edge = document.getElementById(`edge-${node1}-${node2}`) ||
+               document.getElementById(`edge-${node2}-${node1}`);
+  if (edge) {
+    edge.setAttribute('class', highlight ? 'edge edge-highlight' : 'edge');
+  }
+}
+
+// Initialize with some sample data
+addTableRow('router1', 'e1', 'router2', 'e1/1');
+addTableRow('router1', 'e2', 'router3', 'e1/1');
+addTableRow('router3', 'e1/2', 'router2', 'e1/2');
+addTableRow('router4', 'e1', 'router3', 'e1/3');
+</script>
+
+</body>
+</html>

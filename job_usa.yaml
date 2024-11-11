@@ -1,0 +1,20 @@
+discovery:
+  - seed_ip: "172.16.101.100"
+    device_ip: "none"
+    username: "cisco"
+    password: "cisco"
+    vendor: "cisco"
+    protocol: "cdp"
+    domain_name: ".home.com"
+    exclude_string: "SEP"
+    map_name: "usa"
+    output_dir: "./usa_project/usa-rtr-1"
+    layout_algo: "rt"
+
+merge:
+  basefolder: "./usa_project"
+  output: "usa_merged_maps.json"
+  map_name: "usa"
+
+
+

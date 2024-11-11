@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}NDP Maps{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="form-tab" data-bs-toggle="tab" data-bs-target="#form" type="button" role="tab" aria-controls="form" aria-selected="true">Form</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="terminal-tab" data-bs-toggle="tab" data-bs-target="#terminal" type="button" role="tab" aria-controls="terminal" aria-selected="false">Terminal</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="form" role="tabpanel" aria-labelledby="form-tab">
+            <form id="cliForm" class="mt-3">
+                <div class="mb-3">
+                    <label for="seed_ip" class="form-label">Seed IP</label>
+                    <input type="text" class="form-control" id="seed_ip" name="seed_ip" value="{{ form_data.seed_ip or '' }}">
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{ form_data.username or '' }}">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" value="{{ form_data.password or '' }}">
+                </div>
+                <div class="mb-3">
+                    <label for="vendor" class="form-label">Vendor</label>
+                    <select class="form-control" id="vendor" name="vendor">
+                        <option value="cisco" {% if form_data.vendor == 'cisco' %}selected{% endif %}>Cisco</option>
+                        <option value="arista" {% if form_data.vendor == 'arista' %}selected{% endif %}>Arista</option>
+                        <option value="aruba" {% if form_data.vendor == 'aruba' %}selected{% endif %}>Aruba</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="protocol" class="form-label">Protocol</label>
+                    <select class="form-control" id="protocol" name="protocol">
+                        <option value="cdp" {% if form_data.protocol == 'cdp' %}selected{% endif %}>CDP</option>
+                        <option value="lldp" {% if form_data.protocol == 'lldp' %}selected{% endif %}>LLDP</select>
+                </div>
+                <div class="mb-3">
+                    <label for="domain_name" class="form-label">Domain Name</label>
+                    <input type="text" class="form-control" id="domain_name" name="domain_name" value="{{ form_data.domain_name or '.home.com' }}">
+                </div>
+                <div class="mb-3">
+                    <label for="exclude_string" class="form-label">Exclude String</label>
+                    <input type="text" class="form-control" id="exclude_string" name="exclude_string" value="{{ form_data.exclude_string or 'IP Phone' }}">
+                </div>
+                <div class="mb-3">
+                    <label for="map_name" class="form-label">Map Name</label>
+                    <input type="text" class="form-control" id="map_name" name="map_name" value="{{ form_data.map_name or 'Network_map.graphml' }}">
+                </div>
+                <div class="mb-3">
+                    <label for="layout_algo" class="form-label">Layout Algorithm</label>
+                    <input type="text" class="form-control" id="layout_algo" name="layout_algo" value="{{ form_data.layout_algo or 'rt' }}">
+                </div>
+                <div class="mb-3">
+                    <label for="output_dir" class="form-label">Output Directory</label>
+                    <input type="text" class="form-control" id="output_dir" name="output_dir" value="{{ form_data.output_dir or './output' }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Run Tool</button>
+            </form>
+        </div>
+        <div class="tab-pane fade" id="terminal" role="tabpanel" aria-labelledby="terminal-tab">
+            <div id="terminalOutput" class="terminal mt-3" style="max-height: 400px; overflow-y: auto; background-color: black; color: lime; padding: 10px; white-space: pre-wrap; font-family: monospace;"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(function() {
+        let eventSource = null;
+
+        $('#cliForm').on('submit', function(e) {
+            e.preventDefault();
+            const formData = $(this).serialize();
+
+            const terminalTab = new bootstrap.Tab(document.getElementById('terminal-tab'));
+            terminalTab.show();
+
+            const terminalOutput = $('#terminalOutput');
+            terminalOutput.empty();
+
+            // Add the 'show' and 'active' classes to the terminal tab content
+            $('#form').removeClass('show active');
+            $('#terminal').addClass('show active');
+
+            $.post('{{ url_for("map_generator.run_tool") }}', formData, function() {
+                eventSource = new EventSource('{{ url_for("map_generator.stream_output") }}');
+                eventSource.onmessage = function(e) {
+                    if (e.data === "[StreamCompleted]") {
+                        eventSource.close();
+                    } else {
+                        terminalOutput.append(e.data.replace(/\n/g, '<br>') + "<br>");
+                        terminalOutput.scrollTop(terminalOutput[0].scrollHeight);
+                    }
+                };
+            });
+        });
+
+        // Close the EventSource when the user navigates away
+        window.addEventListener('beforeunload', function() {
+            if (eventSource) {
+                eventSource.close();
+            }
+        });
+    });
+</script>
+{% endblock %}

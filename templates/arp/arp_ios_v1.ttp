@@ -1,0 +1,1 @@
+Internet  {{ ip_address }}            {{ age }}   {{ mac_address | mac_eui }}  ARPA   {{ interface }}

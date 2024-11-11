@@ -1,0 +1,9 @@
+Node,Interface,Connected To,Remote Interface
+spine_edge1,eth1/1,spine1,eth1/1
+spine_edge1,eth1/2,spine2,eth1/2
+spine_edge2,eth1/1,spine1,eth2/1
+spine_edge2,eth2/1,spine2,eth2/2
+spine1,eth2/1,leaf1,eth1/1
+spine1,eth2/2,leaf2,eth1/1
+spine2,eth2/3,leaf1,eth1/2
+spine2,eth2/4,leaf2,eth1/2

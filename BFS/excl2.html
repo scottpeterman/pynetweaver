@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Previous head and style sections remain exactly the same -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Network Topology with Spine-Leaf Architecture</title>
+<style>
+  /* ... previous styles ... */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  /* ... rest of previous styles ... */
+</style>
+</head>
+<body>
+
+<h2>Define Network Topology with Interfaces</h2>
+<div class="status" id="status">Ready to start</div>
+<table id="connectionsTable">
+  <tr>
+    <th>Node</th>
+    <th>Interface</th>
+    <th>Connected To</th>
+    <th>Remote Interface</th>
+    <th>Actions</th>
+  </tr>
+</table>
+<button id="addRow">Add Row</button>
+<button id="generateGraph">Generate Graph</button>
+<button id="nextStep">Next Step</button>
+<button id="reset">Reset</button>
+
+<h2>Network Diagram</h2>
+<svg id="networkGraph"></svg>
+
+<script>
+// Global variables
+let graph = {};
+let queue = [];
+let visited = new Set();
+let currentNode = null;
+let edges = new Set();
+
+// Function to add a new row to the table
+function addTableRow(node = '', interface = '', connectedTo = '', remoteInterface = '') {
+  const table = document.getElementById('connectionsTable');
+  const row = table.insertRow();
+  row.innerHTML = `
+    <td><input type="text" value="${node}" placeholder="Node" /></td>
+    <td><input type="text" value="${interface}" placeholder="Interface" /></td>
+    <td><input type="text" value="${connectedTo}" placeholder="Connected Node" /></td>
+    <td><input type="text" value="${remoteInterface}" placeholder="Remote Interface" /></td>
+    <td><button onclick="deleteRow(this)">Delete</button></td>
+  `;
+}
+
+// Function to delete a row
+function deleteRow(btn) {
+  const row = btn.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+}
+
+// Initialize with spine-leaf topology
+function initializeSpineLeaf() {
+  // Clear existing rows
+  const table = document.getElementById('connectionsTable');
+  while (table.rows.length > 1) {
+    table.deleteRow(1);
+  }
+
+  // Add spine-leaf connections
+  addTableRow('spine1', 'eth1/1', 'leaf1', 'eth1/1');
+  addTableRow('spine1', 'eth1/2', 'leaf2', 'eth1/1');
+  addTableRow('spine1', 'eth1/3', 'leaf3', 'eth1/1');
+
+  addTableRow('spine2', 'eth1/1', 'leaf1', 'eth1/2');
+  addTableRow('spine2', 'eth1/2', 'leaf2', 'eth1/2');
+  addTableRow('spine2', 'eth1/3', 'leaf3', 'eth1/2');
+
+  // Add leaf-host connections
+  addTableRow('leaf1', 'eth1/3', 'host1', 'eth1');
+  addTableRow('leaf1', 'eth1/4', 'host2', 'eth1');
+  addTableRow('leaf2', 'eth1/3', 'host3', 'eth1');
+  addTableRow('leaf2', 'eth1/4', 'host4', 'eth1');
+  addTableRow('leaf3', 'eth1/3', 'host5', 'eth1');
+  addTableRow('leaf3', 'eth1/4', 'host6', 'eth1');
+}
+
+function renderGraph() {
+  const svg = document.getElementById('networkGraph');
+  const nodes = Object.keys(graph);
+  const positions = {};
+
+  // Identify node types
+  const spineNodes = nodes.filter(n => n.startsWith('spine'));
+  const leafNodes = nodes.filter(n => n.startsWith('leaf'));
+  const hostNodes = nodes.filter(n => n.startsWith('host'));
+
+  const width = svg.clientWidth;
+  const height = svg.clientHeight;
+
+  // Position spine nodes at the top
+  spineNodes.forEach((node, i) => {
+    positions[node] = {
+      x: width * (i + 1) / (spineNodes.length + 1),
+      y: height * 0.2
+    };
+  });
+
+  // Position leaf nodes in the middle
+  leafNodes.forEach((node, i) => {
+    positions[node] = {
+      x: width * (i + 1) / (leafNodes.length + 1),
+      y: height * 0.5
+    };
+  });
+
+  // Position host nodes at the bottom
+  hostNodes.forEach((node, i) => {
+    const leafIndex = Math.floor(i / 2);
+    const offset = (i % 2) * 100 - 50;
+    positions[node] = {
+      x: width * (leafIndex + 1) / (leafNodes.length + 1) + offset,
+      y: height * 0.8
+    };
+  });
+
+  // Draw edges
+  nodes.forEach(node => {
+    const connections = graph[node] || [];
+    connections.forEach(({ interface, connectedNode, remoteInterface }) => {
+      if (positions[connectedNode] && edges.has(`${node}-${connectedNode}`)) {
+        edges.delete(`${node}-${connectedNode}`);
+        edges.delete(`${connectedNode}-${node}`);
+
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('id', `edge-${node}-${connectedNode}`);
+        line.setAttribute('x1', positions[node].x);
+        line.setAttribute('y1', positions[node].y);
+        line.setAttribute('x2', positions[connectedNode].x);
+        line.setAttribute('y2', positions[connectedNode].y);
+        line.setAttribute('class', 'edge');
+        svg.appendChild(line);
+
+        // Add interface labels
+        const midX = (positions[node].x + positions[connectedNode].x) / 2;
+        const midY = (positions[node].y + positions[connectedNode].y) / 2;
+
+        const label1 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label1.setAttribute('x', midX - 10);
+        label1.setAttribute('y', midY);
+        label1.setAttribute('class', 'interface-label');
+        label1.textContent = interface;
+
+        const label2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label2.setAttribute('x', midX + 10);
+        label2.setAttribute('y', midY);
+        label2.setAttribute('class', 'interface-label');
+        label2.textContent = remoteInterface;
+
+        svg.appendChild(label1);
+        svg.appendChild(label2);
+      }
+    });
+  });
+
+  // Draw nodes
+  nodes.forEach(node => {
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('id', `node-${node}`);
+    circle.setAttribute('cx', positions[node].x);
+    circle.setAttribute('cy', positions[node].y);
+    circle.setAttribute('r', 25);
+
+    if (node.startsWith('spine')) {
+      circle.setAttribute('class', 'spine-node');
+    } else if (node.startsWith('leaf')) {
+      circle.setAttribute('class', 'leaf-node');
+    } else {
+      circle.setAttribute('class', 'host-node');
+    }
+
+    circle.setAttribute('stroke', '#000');
+    circle.setAttribute('stroke-width', '2');
+
+    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    text.setAttribute('x', positions[node].x);
+    text.setAttribute('y', positions[node].y);
+    text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('dominant-baseline', 'middle');
+    text.setAttribute('fill', '#000');
+    text.setAttribute('class', 'node-label');
+    text.textContent = node;
+
+    g.appendChild(circle);
+    g.appendChild(text);
+    svg.appendChild(g);
+  });
+}
+
+function updateStatus(message) {
+  document.getElementById('status').textContent = message;
+}
+
+function startTraversal() {
+  const startNode = Object.keys(graph)[0];
+  if (startNode) {
+    queue = [startNode];
+    visited = new Set([startNode]);
+    highlightNode(startNode, 'yellow');
+    updateStatus(`Starting traversal from node ${startNode}`);
+  }
+}
+
+function bfsStep() {
+  if (queue.length === 0) return;
+
+  const node = queue.shift();
+  currentNode = node;
+  highlightNode(node, '#22c55e');
+
+  const neighbors = graph[node] || [];
+  neighbors.forEach(({ interface, connectedNode, remoteInterface }) => {
+    if (!visited.has(connectedNode)) {
+      queue.push(connectedNode);
+      visited.add(connectedNode);
+      highlightNode(connectedNode, 'yellow');
+      highlightEdge(node, connectedNode, true);
+      updateStatus(`Discovered ${connectedNode} via ${node} (${interface} ↔ ${remoteInterface})`);
+    }
+  });
+}
+
+function resetGraph() {
+  const svg = document.getElementById('networkGraph');
+  svg.innerHTML = '';
+  renderGraph();
+  visited = new Set();
+  queue = [];
+  updateStatus('Graph reset. Ready to start traversal.');
+}
+
+function highlightNode(node, color) {
+  const circle = document.getElementById(`node-${node}`);
+  if (circle) {
+    circle.setAttribute('fill', color);
+  }
+}
+
+function highlightEdge(node1, node2, highlight) {
+  const edge = document.getElementById(`edge-${node1}-${node2}`) ||
+               document.getElementById(`edge-${node2}-${node1}`);
+  if (edge) {
+    edge.setAttribute('class', highlight ? 'edge edge-highlight' : 'edge');
+  }
+}
+
+// Event Listeners
+document.getElementById('addRow').addEventListener('click', () => {
+  addTableRow();
+});
+
+document.getElementById('generateGraph').addEventListener('click', () => {
+  graph = {};
+  queue = [];
+  visited = new Set();
+  edges = new Set();
+  currentNode = null;
+
+  const table = document.getElementById('connectionsTable');
+
+  for (let i = 1; i < table.rows.length; i++) {
+    const inputs = table.rows[i].getElementsByTagName('input');
+    const node = inputs[0].value.trim();
+    const interface = inputs[1].value.trim();
+    const connectedNode = inputs[2].value.trim();
+    const remoteInterface = inputs[3].value.trim();
+
+    if (node && connectedNode) {
+      if (!graph[node]) graph[node] = [];
+      graph[node].push({ interface, connectedNode, remoteInterface });
+
+      if (!graph[connectedNode]) graph[connectedNode] = [];
+      graph[connectedNode].push({ interface: remoteInterface, connectedNode: node, remoteInterface: interface });
+
+      edges.add(`${node}-${connectedNode}`);
+    }
+  }
+
+  resetGraph();
+  startTraversal();
+  updateStatus('Graph generated. Click Next Step to begin traversal.');
+});
+
+document.getElementById('nextStep').addEventListener('click', () => {
+  if (queue.length > 0) {
+    bfsStep();
+  } else if (visited.size > 0) {
+    updateStatus('Traversal complete!');
+  }
+});
+
+document.getElementById('reset').addEventListener('click', () => {
+  resetGraph();
+  startTraversal();
+});
+
+// Initialize on page load
+window.onload = function() {
+  initializeSpineLeaf();
+}
+</script>
+
+</body>
+</html>

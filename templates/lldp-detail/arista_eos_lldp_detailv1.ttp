@@ -1,0 +1,26 @@
+<vars>
+interface_name = ""
+</vars>
+
+<macro>
+def save_interface(data):
+    global interface_name
+    interface_name = data["interface"]
+    return False  # Don't include parent data
+
+def add_interface(data):
+    global interface_name
+    data["local_interface"] = interface_name
+    return data
+</macro>
+
+<group macro="save_interface">
+Interface {{ interface }} detected {{ neighbor_count | re("1") }} LLDP neighbors:
+  <group macro="add_interface">
+    Port ID     : "{{ remote_interface }}"
+  - System Name: "{{ device_id }}"
+  - System Description: "{{ platform | ORPHRASE }}"
+  - System Capabilities : {{ capabilities | ORPHRASE }}
+    Management Address        : {{ ip_address | default('ip_not_found') }}
+  </group>
+</group>

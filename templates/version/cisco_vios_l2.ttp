@@ -1,0 +1,2 @@
+{{ vendor }} {{ platform | ORPHRASE }}, vios_l2 Software ({{ features }}), Version {{ version }}, TEST ENGINEERING ESTG_WEEKLY BUILD, synced to  END_OF_FLO_ISP
+Processor board ID {{ serial_number }}

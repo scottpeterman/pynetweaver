@@ -1,0 +1,1 @@
+{{ interface }}       {{ ip_address | IP }}  {{ mac_address | mac_eui }} {{ port }}         {{ status }}      {{ age }}

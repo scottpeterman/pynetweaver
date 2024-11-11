@@ -1,0 +1,1291 @@
+{
+  "timestamp": "2024-11-10T20:57:23.608931",
+  "devices": {
+    "sw-a-c": {
+      "ip_address": "172.16.101.21",
+      "access_info": {
+        "ssh_works": true,
+        "snmp_works": true,
+        "working_community": "write",
+        "os_type": "arista",
+        "prompt": "sw-a-c#",
+        "hostname": "sw-a-c"
+      },
+      "collected_data": {
+        "snmp": {
+          "system": {
+            "sysName": "sw-a-c",
+            "sysDescr": "Arista Networks EOS version 4.18.4F running on an Arista Networks vEOS"
+          },
+          "interfaces": {},
+          "working_community": "write"
+        },
+        "cli": {
+          "arp": [
+            {
+              "age": "N/A",
+              "flags": "not learned",
+              "interface": "Vlan1,",
+              "ip_address": "172.16.101.1",
+              "mac_address": "0c:ab:00:18:80:01"
+            },
+            {
+              "age": "N/A",
+              "flags": "Ethernet1",
+              "interface": "Vlan1,",
+              "ip_address": "172.16.101.100",
+              "mac_address": "ca:01:8e:69:00:38"
+            }
+          ],
+          "lldp-detail": [
+            {
+              "capabilities": "Bridge, Router",
+              "device_id": "usa1-core-01.home.com",
+              "ip_address": "172.16.101.1",
+              "local_interface": "Ethernet1",
+              "remote_interface": "Gi0/2"
+            },
+            {
+              "capabilities": "Bridge, Router",
+              "device_id": "sw-a-a-1",
+              "ip_address": "172.16.101.22",
+              "local_interface": "Ethernet2",
+              "platform": "Arista Networks EOS version 4.18.4F running on an Arista Networks vEOS",
+              "remote_interface": "Ethernet1"
+            },
+            {
+              "capabilities": "Bridge, Router",
+              "device_id": "sw-a-a-2",
+              "ip_address": "0c18.3d17.cbe7",
+              "local_interface": "Ethernet3",
+              "platform": "Arista Networks EOS version 4.18.4F running on an Arista Networks vEOS",
+              "remote_interface": "Ethernet1"
+            }
+          ],
+          "int-status": [
+            {
+              "description": "Vlan     Duplex Speed  Type            Flags",
+              "interface": "Port",
+              "lp_status": "Status",
+              "phy_status": "Name"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et1",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et2",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et3",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et4",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et5",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et6",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et7",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et8",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et9",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et10",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et11",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et12",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "auto   auto   10/100/1000          ",
+              "interface": "Ma1",
+              "lp_status": "routed",
+              "phy_status": "notconnect"
+            }
+          ]
+        }
+      },
+      "collection_errors": [],
+      "discovery_time": "2024-11-10T20:54:19.334429"
+    },
+    "usa1-core-01": {
+      "ip_address": "172.16.101.1",
+      "access_info": {
+        "ssh_works": true,
+        "snmp_works": true,
+        "working_community": "write",
+        "os_type": "ios",
+        "prompt": "usa1-core-01#",
+        "hostname": "usa1-core-01"
+      },
+      "collected_data": {
+        "snmp": {
+          "system": {
+            "sysName": "usa1-core-01.home.com",
+            "sysDescr": "Cisco IOS Software, vios_l2 Software (vios_l2-ADVENTERPRISEK9-M), Version 15.2(4.0.55)E, TEST ENGINEERING ESTG_WEEKLY BUILD, synced to  END_OF_FLO_ISP\r\nTechnical Support: http://www.cisco.com/techsupport\r\nCopyright (c) 1986-2015 by Cisco Systems, Inc.\r\nCo"
+          },
+          "interfaces": {},
+          "working_community": "write"
+        },
+        "cli": {
+          "version": [
+            {
+              "features": "vios_l2-ADVENTERPRISEK9-M",
+              "platform": "IOS Software",
+              "serial_number": "9M2G8CK29M4",
+              "vendor": "Cisco",
+              "version": "15.2(4.0.55)E"
+            }
+          ],
+          "arp": [
+            {
+              "age": "Vlan1",
+              "interface": "Internet",
+              "ip_address": "172.16.101.1",
+              "mac_address": "-",
+              "port": "0cab.0018.8001",
+              "status": "ARPA"
+            },
+            {
+              "age": "Vlan1",
+              "interface": "Internet",
+              "ip_address": "172.16.101.2",
+              "mac_address": "11:80:00:00:00:00",
+              "port": "0c4f.6392.8001",
+              "status": "ARPA"
+            },
+            {
+              "age": "Vlan1",
+              "interface": "Internet",
+              "ip_address": "172.16.101.21",
+              "mac_address": "13:30:00:00:00:00",
+              "port": "0c96.dc37.c1c3",
+              "status": "ARPA"
+            },
+            {
+              "age": "Vlan1",
+              "interface": "Internet",
+              "ip_address": "172.16.101.22",
+              "mac_address": "13:00:00:00:00:00",
+              "port": "0c3d.dbc0.d81f",
+              "status": "ARPA"
+            },
+            {
+              "age": "Vlan1",
+              "interface": "Internet",
+              "ip_address": "172.16.101.100",
+              "mac_address": "43:00:00:00:00:00",
+              "port": "ca01.8e69.0038",
+              "status": "ARPA"
+            }
+          ],
+          "cdp-detail": [
+            {
+              "capabilities": "Router Switch IGMP",
+              "device_id": "usa1-core-02.home.com",
+              "ip_address": "172.16.101.2",
+              "local_interface": "GigabitEthernet0/1",
+              "platform": "Cisco ",
+              "remote_interface": "GigabitEthernet0/1"
+            },
+            {
+              "capabilities": "Router Switch IGMP",
+              "device_id": "usa1-access-02.home.com",
+              "ip_address": "172.16.101.4",
+              "local_interface": "GigabitEthernet0/3",
+              "platform": "Cisco ",
+              "remote_interface": "GigabitEthernet0/2"
+            },
+            {
+              "capabilities": "Router",
+              "device_id": "usa1-rtr-1.home.com",
+              "ip_address": "172.16.101.100",
+              "local_interface": "GigabitEthernet0/0",
+              "platform": "Cisco 7206VXR",
+              "remote_interface": "Ethernet2/0"
+            }
+          ],
+          "lldp-detail": [
+            {
+              "capabilities": "B,R",
+              "device_id": "sw-a-c",
+              "ip_address": "172.16.101.21",
+              "local_interface": "Gi0/2",
+              "platform": "EOS version 4.18.4F running on an Arista Networks vEOS",
+              "remote_interface": "Ethernet1"
+            }
+          ],
+          "int-status": [
+            {
+              "description": "Description",
+              "interface": "Interface",
+              "lp_status": "Protocol",
+              "phy_status": "Status"
+            },
+            {
+              "description": "to router 1",
+              "interface": "Gi0/0",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": "to switch2 e1(g0/1)",
+              "interface": "Gi0/1",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": "to switch3 e0(g0/0)",
+              "interface": "Gi0/2",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": "to switch 4 e2(g0/2)",
+              "interface": "Gi0/3",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": " ",
+              "interface": "Vl1",
+              "lp_status": "up",
+              "phy_status": "up"
+            }
+          ]
+        }
+      },
+      "collection_errors": [],
+      "discovery_time": "2024-11-10T20:54:44.785677"
+    },
+    "sw-a-a-1": {
+      "ip_address": "172.16.101.22",
+      "access_info": {
+        "ssh_works": true,
+        "snmp_works": true,
+        "working_community": "write",
+        "os_type": "arista",
+        "prompt": "sw-a-a-1#",
+        "hostname": "sw-a-a-1"
+      },
+      "collected_data": {
+        "snmp": {
+          "system": {
+            "sysName": "sw-a-a-1",
+            "sysDescr": "Arista Networks EOS version 4.18.4F running on an Arista Networks vEOS"
+          },
+          "interfaces": {},
+          "working_community": "write"
+        },
+        "cli": {
+          "arp": [
+            {
+              "age": "N/A",
+              "flags": "not learned",
+              "interface": "Vlan1,",
+              "ip_address": "172.16.101.1",
+              "mac_address": "0c:ab:00:18:80:01"
+            },
+            {
+              "age": "N/A",
+              "flags": "Ethernet2",
+              "interface": "Vlan1,",
+              "ip_address": "172.16.101.100",
+              "mac_address": "ca:01:8e:69:00:38"
+            }
+          ],
+          "lldp-detail": [
+            {
+              "capabilities": "Bridge, Router",
+              "device_id": "sw-a-c",
+              "ip_address": "172.16.101.21",
+              "local_interface": "Ethernet1",
+              "platform": "Arista Networks EOS version 4.18.4F running on an Arista Networks vEOS",
+              "remote_interface": "Ethernet2"
+            },
+            {
+              "capabilities": "Bridge, Router",
+              "device_id": "sw-a-a-2",
+              "ip_address": "0c18.3d17.cbe7",
+              "local_interface": "Ethernet2",
+              "platform": "Arista Networks EOS version 4.18.4F running on an Arista Networks vEOS",
+              "remote_interface": "Ethernet2"
+            }
+          ],
+          "int-status": [
+            {
+              "description": "Vlan     Duplex Speed  Type            Flags",
+              "interface": "Port",
+              "lp_status": "Status",
+              "phy_status": "Name"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et1",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et2",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et3",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et4",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et5",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et6",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et7",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et8",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et9",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et10",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et11",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "full   unconf EbraTestPhyPort      ",
+              "interface": "Et12",
+              "lp_status": "1",
+              "phy_status": "connected"
+            },
+            {
+              "description": "auto   auto   10/100/1000          ",
+              "interface": "Ma1",
+              "lp_status": "routed",
+              "phy_status": "notconnect"
+            }
+          ]
+        }
+      },
+      "collection_errors": [],
+      "discovery_time": "2024-11-10T20:55:16.156870"
+    },
+    "usa1-core-02": {
+      "ip_address": "172.16.101.2",
+      "access_info": {
+        "ssh_works": true,
+        "snmp_works": true,
+        "working_community": "write",
+        "os_type": "ios",
+        "prompt": "usa1-core-02#",
+        "hostname": "usa1-core-02"
+      },
+      "collected_data": {
+        "snmp": {
+          "system": {
+            "sysName": "usa1-core-02.home.com",
+            "sysDescr": "Cisco IOS Software, vios_l2 Software (vios_l2-ADVENTERPRISEK9-M), Version 15.2(4.0.55)E, TEST ENGINEERING ESTG_WEEKLY BUILD, synced to  END_OF_FLO_ISP\r\nTechnical Support: http://www.cisco.com/techsupport\r\nCopyright (c) 1986-2015 by Cisco Systems, Inc.\r\nCo"
+          },
+          "interfaces": {},
+          "working_community": "write"
+        },
+        "cli": {
+          "version": [
+            {
+              "features": "vios_l2-ADVENTERPRISEK9-M",
+              "platform": "IOS Software",
+              "serial_number": "9R0M2S04HX3",
+              "vendor": "Cisco",
+              "version": "15.2(4.0.55)E"
+            }
+          ],
+          "arp": [
+            {
+              "age": "Vlan1",
+              "interface": "Internet",
+              "ip_address": "172.16.101.1",
+              "mac_address": "11:80:00:00:00:00",
+              "port": "0cab.0018.8001",
+              "status": "ARPA"
+            },
+            {
+              "age": "Vlan1",
+              "interface": "Internet",
+              "ip_address": "172.16.101.2",
+              "mac_address": "-",
+              "port": "0c4f.6392.8001",
+              "status": "ARPA"
+            },
+            {
+              "age": "Vlan1",
+              "interface": "Internet",
+              "ip_address": "172.16.101.4",
+              "mac_address": "12:40:00:00:00:00",
+              "port": "0c59.b769.8001",
+              "status": "ARPA"
+            },
+            {
+              "age": "Vlan1",
+              "interface": "Internet",
+              "ip_address": "172.16.101.21",
+              "mac_address": "13:40:00:00:00:00",
+              "port": "0c96.dc37.c1c3",
+              "status": "ARPA"
+            },
+            {
+              "age": "Vlan1",
+              "interface": "Internet",
+              "ip_address": "172.16.101.22",
+              "mac_address": "13:10:00:00:00:00",
+              "port": "0c3d.dbc0.d81f",
+              "status": "ARPA"
+            },
+            {
+              "age": "Vlan1",
+              "interface": "Internet",
+              "ip_address": "172.16.101.100",
+              "mac_address": "44:00:00:00:00:00",
+              "port": "ca01.8e69.0038",
+              "status": "ARPA"
+            }
+          ],
+          "cdp-detail": [
+            {
+              "capabilities": "Router Switch IGMP",
+              "device_id": "usa1-core-01.home.com",
+              "ip_address": "172.16.101.1",
+              "local_interface": "GigabitEthernet0/1",
+              "platform": "Cisco ",
+              "remote_interface": "GigabitEthernet0/1"
+            },
+            {
+              "capabilities": "Router Switch IGMP",
+              "device_id": "usa1-access-02.home.com",
+              "ip_address": "172.16.101.4",
+              "local_interface": "GigabitEthernet0/2",
+              "platform": "Cisco ",
+              "remote_interface": "GigabitEthernet0/0"
+            },
+            {
+              "capabilities": "Router",
+              "device_id": "usa1-rtr-1.home.com",
+              "ip_address": "172.16.128.1",
+              "local_interface": "GigabitEthernet0/0",
+              "platform": "Cisco 7206VXR",
+              "remote_interface": "Ethernet1/2"
+            }
+          ],
+          "int-status": [
+            {
+              "description": "Description",
+              "interface": "Interface",
+              "lp_status": "Protocol",
+              "phy_status": "Status"
+            },
+            {
+              "description": " ",
+              "interface": "Gi0/0",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": " ",
+              "interface": "Gi0/1",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": " ",
+              "interface": "Gi0/2",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": " ",
+              "interface": "Gi0/3",
+              "lp_status": "down",
+              "phy_status": "down"
+            },
+            {
+              "description": " ",
+              "interface": "Vl1",
+              "lp_status": "up",
+              "phy_status": "up"
+            }
+          ]
+        }
+      },
+      "collection_errors": [],
+      "discovery_time": "2024-11-10T20:55:32.501920"
+    },
+    "usa1-access-02": {
+      "ip_address": "172.16.101.4",
+      "access_info": {
+        "ssh_works": true,
+        "snmp_works": true,
+        "working_community": "write",
+        "os_type": "ios",
+        "prompt": "usa1-access-02#",
+        "hostname": "usa1-access-02"
+      },
+      "collected_data": {
+        "snmp": {
+          "system": {
+            "sysName": "usa1-access-02.home.com",
+            "sysDescr": "Cisco IOS Software, vios_l2 Software (vios_l2-ADVENTERPRISEK9-M), Version 15.2(4.0.55)E, TEST ENGINEERING ESTG_WEEKLY BUILD, synced to  END_OF_FLO_ISP\r\nTechnical Support: http://www.cisco.com/techsupport\r\nCopyright (c) 1986-2015 by Cisco Systems, Inc.\r\nCo"
+          },
+          "interfaces": {},
+          "working_community": "write"
+        },
+        "cli": {
+          "version": [
+            {
+              "features": "vios_l2-ADVENTERPRISEK9-M",
+              "platform": "IOS Software",
+              "serial_number": "9QMPH98YKE2",
+              "vendor": "Cisco",
+              "version": "15.2(4.0.55)E"
+            }
+          ],
+          "arp": [
+            {
+              "age": "Vlan1",
+              "interface": "Internet",
+              "ip_address": "172.16.101.2",
+              "mac_address": "12:50:00:00:00:00",
+              "port": "0c4f.6392.8001",
+              "status": "ARPA"
+            },
+            {
+              "age": "Vlan1",
+              "interface": "Internet",
+              "ip_address": "172.16.101.4",
+              "mac_address": "-",
+              "port": "0c59.b769.8001",
+              "status": "ARPA"
+            },
+            {
+              "age": "Vlan1",
+              "interface": "Internet",
+              "ip_address": "172.16.101.21",
+              "mac_address": "13:40:00:00:00:00",
+              "port": "0c96.dc37.c1c3",
+              "status": "ARPA"
+            },
+            {
+              "age": "Vlan1",
+              "interface": "Internet",
+              "ip_address": "172.16.101.22",
+              "mac_address": "13:10:00:00:00:00",
+              "port": "0c3d.dbc0.d81f",
+              "status": "ARPA"
+            },
+            {
+              "age": "Vlan1",
+              "interface": "Internet",
+              "ip_address": "172.16.101.100",
+              "mac_address": "44:00:00:00:00:00",
+              "port": "ca01.8e69.0038",
+              "status": "ARPA"
+            }
+          ],
+          "cdp-detail": [
+            {
+              "capabilities": "Router Switch IGMP",
+              "device_id": "usa1-core-02.home.com",
+              "ip_address": "172.16.101.2",
+              "local_interface": "GigabitEthernet0/0",
+              "platform": "Cisco ",
+              "remote_interface": "GigabitEthernet0/2"
+            },
+            {
+              "capabilities": "Router Switch IGMP",
+              "device_id": "usa1-core-01.home.com",
+              "ip_address": "172.16.101.1",
+              "local_interface": "GigabitEthernet0/2",
+              "platform": "Cisco ",
+              "remote_interface": "GigabitEthernet0/3"
+            }
+          ],
+          "int-status": [
+            {
+              "description": "Description",
+              "interface": "Interface",
+              "lp_status": "Protocol",
+              "phy_status": "Status"
+            },
+            {
+              "description": " ",
+              "interface": "Gi0/0",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": " ",
+              "interface": "Gi0/1",
+              "lp_status": "down",
+              "phy_status": "down"
+            },
+            {
+              "description": "to switch 1 e3(g0/3)",
+              "interface": "Gi0/2",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": " ",
+              "interface": "Gi0/3",
+              "lp_status": "down",
+              "phy_status": "down"
+            },
+            {
+              "description": " ",
+              "interface": "Vl1",
+              "lp_status": "up",
+              "phy_status": "up"
+            }
+          ]
+        }
+      },
+      "collection_errors": [],
+      "discovery_time": "2024-11-10T20:55:50.028145"
+    },
+    "usa1-rtr-1": {
+      "ip_address": "172.16.101.100",
+      "access_info": {
+        "ssh_works": true,
+        "snmp_works": true,
+        "working_community": "write",
+        "os_type": "ios",
+        "prompt": "usa1-rtr-1#",
+        "hostname": "usa1-rtr-1"
+      },
+      "collected_data": {
+        "snmp": {
+          "system": {
+            "sysName": "usa1-rtr-1.home.com",
+            "sysDescr": "Cisco IOS Software, 7200 Software (C7200-ADVENTERPRISEK9-M), Version 15.2(4)M11, RELEASE SOFTWARE (fc2)\r\nTechnical Support: http://www.cisco.com/techsupport\r\nCopyright (c) 1986-2016 by Cisco Systems, Inc.\r\nCompiled Sun 16-Oct-16 07:53 by prod_rel_team"
+          },
+          "interfaces": {},
+          "working_community": "write"
+        },
+        "cli": {
+          "version": [
+            {
+              "feature_image": "C7200-ADVENTERPRISEK9-M",
+              "memory": "491520K/32768K",
+              "model": "7206VXR (NPE400) processor (revision A)",
+              "os_family": "IOS Software",
+              "os_version": "15.2(4)M11, RELEASE SOFTWARE (fc2)",
+              "platform": "7200",
+              "serial_number": "4279256517",
+              "vendor": "Cisco"
+            }
+          ],
+          "arp": [
+            {
+              "age": "Ethernet1/1",
+              "interface": "Internet",
+              "ip_address": "172.16.1.1",
+              "mac_address": "00:00:00:00:00:00",
+              "port": "1e0e.d786.d83e",
+              "status": "ARPA"
+            },
+            {
+              "age": "Ethernet1/1",
+              "interface": "Internet",
+              "ip_address": "172.16.1.101",
+              "mac_address": "-",
+              "port": "ca01.8e69.001d",
+              "status": "ARPA"
+            },
+            {
+              "age": "Ethernet1/1",
+              "interface": "Internet",
+              "ip_address": "172.16.1.102",
+              "mac_address": "21:00:00:00:00:00",
+              "port": "ca02.8ea7.001d",
+              "status": "ARPA"
+            },
+            {
+              "age": "Ethernet2/0",
+              "interface": "Internet",
+              "ip_address": "172.16.101.1",
+              "mac_address": "83:00:00:00:00:00",
+              "port": "0cab.0018.8001",
+              "status": "ARPA"
+            },
+            {
+              "age": "Ethernet2/0",
+              "interface": "Internet",
+              "ip_address": "172.16.101.2",
+              "mac_address": "64:00:00:00:00:00",
+              "port": "0c4f.6392.8001",
+              "status": "ARPA"
+            },
+            {
+              "age": "Ethernet2/0",
+              "interface": "Internet",
+              "ip_address": "172.16.101.4",
+              "mac_address": "65:00:00:00:00:00",
+              "port": "0c59.b769.8001",
+              "status": "ARPA"
+            },
+            {
+              "age": "Ethernet2/0",
+              "interface": "Internet",
+              "ip_address": "172.16.101.21",
+              "mac_address": "82:00:00:00:00:00",
+              "port": "0c96.dc37.c1c3",
+              "status": "ARPA"
+            },
+            {
+              "age": "Ethernet2/0",
+              "interface": "Internet",
+              "ip_address": "172.16.101.22",
+              "mac_address": "80:00:00:00:00:00",
+              "port": "0c3d.dbc0.d81f",
+              "status": "ARPA"
+            },
+            {
+              "age": "Ethernet2/0",
+              "interface": "Internet",
+              "ip_address": "172.16.101.100",
+              "mac_address": "-",
+              "port": "ca01.8e69.0038",
+              "status": "ARPA"
+            },
+            {
+              "age": "Ethernet1/0",
+              "interface": "Internet",
+              "ip_address": "172.16.128.1",
+              "mac_address": "-",
+              "port": "ca01.8e69.001c",
+              "status": "ARPA"
+            },
+            {
+              "age": "Ethernet1/0",
+              "interface": "Internet",
+              "ip_address": "172.16.128.2",
+              "mac_address": "21:00:00:00:00:00",
+              "port": "ca02.8ea7.001c",
+              "status": "ARPA"
+            }
+          ],
+          "cdp-detail": [
+            {
+              "capabilities": "Router Switch IGMP",
+              "device_id": "usa1-core-02.home.com",
+              "ip_address": "172.16.101.2",
+              "local_interface": "Ethernet1/2",
+              "platform": "Cisco ",
+              "remote_interface": "GigabitEthernet0/0"
+            },
+            {
+              "capabilities": "Router Switch IGMP",
+              "device_id": "usa1-core-01.home.com",
+              "ip_address": "172.16.101.1",
+              "local_interface": "Ethernet2/0",
+              "platform": "Cisco ",
+              "remote_interface": "GigabitEthernet0/0"
+            },
+            {
+              "capabilities": "Router",
+              "device_id": "usa2-rtr-1.home.com",
+              "ip_address": "172.16.1.102",
+              "local_interface": "Ethernet1/1",
+              "platform": "Cisco 7206VXR",
+              "remote_interface": "Ethernet1/1"
+            },
+            {
+              "capabilities": "Router",
+              "device_id": "usa2-rtr-1.home.com",
+              "ip_address": "172.16.128.2",
+              "local_interface": "Ethernet1/0",
+              "platform": "Cisco 7206VXR",
+              "remote_interface": "Ethernet1/0"
+            }
+          ],
+          "int-status": [
+            {
+              "description": "Description",
+              "interface": "Interface",
+              "lp_status": "Protocol",
+              "phy_status": "Status"
+            },
+            {
+              "description": "down     this is an interface description",
+              "interface": "Fa0/0",
+              "lp_status": "down",
+              "phy_status": "admin"
+            },
+            {
+              "description": "to R2",
+              "interface": "Et1/0",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": "to cloud",
+              "interface": "Et1/1",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": " ",
+              "interface": "Et1/2",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": "down     ",
+              "interface": "Et1/3",
+              "lp_status": "down",
+              "phy_status": "admin"
+            },
+            {
+              "description": "to switch1",
+              "interface": "Et2/0",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": "down     ",
+              "interface": "Et2/1",
+              "lp_status": "down",
+              "phy_status": "admin"
+            },
+            {
+              "description": "to switch 2",
+              "interface": "Et2/2",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": "down     ",
+              "interface": "Et2/3",
+              "lp_status": "down",
+              "phy_status": "admin"
+            },
+            {
+              "description": "down     ",
+              "interface": "Et3/0",
+              "lp_status": "down",
+              "phy_status": "admin"
+            },
+            {
+              "description": "down     ",
+              "interface": "Et3/1",
+              "lp_status": "down",
+              "phy_status": "admin"
+            },
+            {
+              "description": "down     ",
+              "interface": "Et3/2",
+              "lp_status": "down",
+              "phy_status": "admin"
+            },
+            {
+              "description": "down     ",
+              "interface": "Et3/3",
+              "lp_status": "down",
+              "phy_status": "admin"
+            },
+            {
+              "description": "Test Loopback",
+              "interface": "Lo0",
+              "lp_status": "up",
+              "phy_status": "up"
+            }
+          ],
+          "inventory": [
+            {
+              "description": "Cisco 7206VXR, 6-slot chassis",
+              "part_name": "Chassis",
+              "part_no": "CISCO7206VXR",
+              "serial_number": "4279256517"
+            },
+            {
+              "description": "Cisco 7200VXR Network Processing Engine NPE-400",
+              "part_name": "NPE400 0",
+              "part_no": "NPE-400",
+              "serial_number": "11111111"
+            },
+            {
+              "description": "I/O FastEthernet (TX-ISL)",
+              "part_name": "module 0"
+            },
+            {
+              "description": "Ethernet",
+              "part_name": "module 1",
+              "part_no": "PA-4E=",
+              "serial_number": "4294967295"
+            },
+            {
+              "description": "Ethernet",
+              "part_name": "module 2",
+              "part_no": "PA-4E=",
+              "serial_number": "4294967295"
+            },
+            {
+              "description": "Ethernet",
+              "part_name": "module 3",
+              "part_no": "PA-4E=",
+              "serial_number": "4294967295"
+            },
+            {
+              "description": "Cisco 7200 AC Power Supply",
+              "part_name": "Power Supply 1"
+            },
+            {
+              "description": "Cisco 7200 AC Power Supply",
+              "part_name": "Power Supply 2"
+            }
+          ]
+        }
+      },
+      "collection_errors": [],
+      "discovery_time": "2024-11-10T20:56:07.686122"
+    },
+    "usa2-rtr-1": {
+      "ip_address": "172.16.1.102",
+      "access_info": {
+        "ssh_works": true,
+        "snmp_works": true,
+        "working_community": "write",
+        "os_type": "ios",
+        "prompt": "usa2-rtr-1#",
+        "hostname": "usa2-rtr-1"
+      },
+      "collected_data": {
+        "snmp": {
+          "system": {
+            "sysName": "usa2-rtr-1.home.com",
+            "sysDescr": "Cisco IOS Software, 7200 Software (C7200-ADVENTERPRISEK9-M), Version 15.2(4)M11, RELEASE SOFTWARE (fc2)\r\nTechnical Support: http://www.cisco.com/techsupport\r\nCopyright (c) 1986-2016 by Cisco Systems, Inc.\r\nCompiled Sun 16-Oct-16 07:53 by prod_rel_team"
+          },
+          "interfaces": {},
+          "working_community": "write"
+        },
+        "cli": {
+          "version": [
+            {
+              "feature_image": "C7200-ADVENTERPRISEK9-M",
+              "memory": "491520K/32768K",
+              "model": "7206VXR (NPE400) processor (revision A)",
+              "os_family": "IOS Software",
+              "os_version": "15.2(4)M11, RELEASE SOFTWARE (fc2)",
+              "platform": "7200",
+              "serial_number": "4279256517",
+              "vendor": "Cisco"
+            }
+          ],
+          "arp": [
+            {
+              "age": "Ethernet1/1",
+              "interface": "Internet",
+              "ip_address": "172.16.1.1",
+              "mac_address": "00:00:00:00:00:00",
+              "port": "1e0e.d786.d83e",
+              "status": "ARPA"
+            },
+            {
+              "age": "Ethernet1/1",
+              "interface": "Internet",
+              "ip_address": "172.16.1.101",
+              "mac_address": "20:70:00:00:00:00",
+              "port": "ca01.8e69.001d",
+              "status": "ARPA"
+            },
+            {
+              "age": "Ethernet1/1",
+              "interface": "Internet",
+              "ip_address": "172.16.1.102",
+              "mac_address": "-",
+              "port": "ca02.8ea7.001d",
+              "status": "ARPA"
+            },
+            {
+              "age": "Ethernet1/0",
+              "interface": "Internet",
+              "ip_address": "172.16.128.1",
+              "mac_address": "20:70:00:00:00:00",
+              "port": "ca01.8e69.001c",
+              "status": "ARPA"
+            },
+            {
+              "age": "Ethernet1/0",
+              "interface": "Internet",
+              "ip_address": "172.16.128.2",
+              "mac_address": "-",
+              "port": "ca02.8ea7.001c",
+              "status": "ARPA"
+            },
+            {
+              "age": "Ethernet1/2",
+              "interface": "Internet",
+              "ip_address": "172.16.201.100",
+              "mac_address": "-",
+              "port": "ca02.8ea7.001e",
+              "status": "ARPA"
+            },
+            {
+              "age": "Ethernet2/0",
+              "interface": "Internet",
+              "ip_address": "172.16.202.100",
+              "mac_address": "-",
+              "port": "ca02.8ea7.0038",
+              "status": "ARPA"
+            }
+          ],
+          "cdp-detail": [
+            {
+              "capabilities": "Router Switch IGMP",
+              "device_id": "usa2-core-01.home.com",
+              "ip_address": "172.16.201.1",
+              "local_interface": "Ethernet1/2",
+              "platform": "Cisco ",
+              "remote_interface": "GigabitEthernet0/0"
+            },
+            {
+              "capabilities": "Router",
+              "device_id": "usa1-rtr-1.home.com",
+              "ip_address": "172.16.1.101",
+              "local_interface": "Ethernet1/1",
+              "platform": "Cisco 7206VXR",
+              "remote_interface": "Ethernet1/1"
+            },
+            {
+              "capabilities": "Router",
+              "device_id": "usa1-rtr-1.home.com",
+              "ip_address": "172.16.128.1",
+              "local_interface": "Ethernet1/0",
+              "platform": "Cisco 7206VXR",
+              "remote_interface": "Ethernet1/0"
+            }
+          ],
+          "int-status": [
+            {
+              "description": "Description",
+              "interface": "Interface",
+              "lp_status": "Protocol",
+              "phy_status": "Status"
+            },
+            {
+              "description": "down     ",
+              "interface": "Fa0/0",
+              "lp_status": "down",
+              "phy_status": "admin"
+            },
+            {
+              "description": "to R1",
+              "interface": "Et1/0",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": "to cloud",
+              "interface": "Et1/1",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": "to core 1",
+              "interface": "Et1/2",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": " ",
+              "interface": "Et1/3",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": " ",
+              "interface": "Et2/0",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": " ",
+              "interface": "Et2/1",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": " ",
+              "interface": "Et2/2",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": " ",
+              "interface": "Et2/3",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": " ",
+              "interface": "Et3/0",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": " ",
+              "interface": "Et3/1",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": " ",
+              "interface": "Et3/2",
+              "lp_status": "up",
+              "phy_status": "up"
+            },
+            {
+              "description": " ",
+              "interface": "Et3/3",
+              "lp_status": "up",
+              "phy_status": "up"
+            }
+          ],
+          "inventory": [
+            {
+              "description": "Cisco 7206VXR, 6-slot chassis",
+              "part_name": "Chassis",
+              "part_no": "CISCO7206VXR",
+              "serial_number": "4279256517"
+            },
+            {
+              "description": "Cisco 7200VXR Network Processing Engine NPE-400",
+              "part_name": "NPE400 0",
+              "part_no": "NPE-400",
+              "serial_number": "11111111"
+            },
+            {
+              "description": "I/O FastEthernet (TX-ISL)",
+              "part_name": "module 0"
+            },
+            {
+              "description": "Ethernet",
+              "part_name": "module 1",
+              "part_no": "PA-4E=",
+              "serial_number": "4294967295"
+            },
+            {
+              "description": "Ethernet",
+              "part_name": "module 2",
+              "part_no": "PA-4E=",
+              "serial_number": "4294967295"
+            },
+            {
+              "description": "Ethernet",
+              "part_name": "module 3",
+              "part_no": "PA-4E=",
+              "serial_number": "4294967295"
+            },
+            {
+              "description": "Cisco 7200 AC Power Supply",
+              "part_name": "Power Supply 1"
+            },
+            {
+              "description": "Cisco 7200 AC Power Supply",
+              "part_name": "Power Supply 2"
+            }
+          ]
+        }
+      },
+      "collection_errors": [],
+      "discovery_time": "2024-11-10T20:56:30.011277"
+    }
+  },
+  "summary": {
+    "total_devices": 7,
+    "snmp_accessible": 7,
+    "ssh_accessible": 7,
+    "os_types": {
+      "arista": 2,
+      "ios": 5
+    },
+    "failed_devices": [],
+    "discovery_duration": "0:02:10.676848"
+  }
+}

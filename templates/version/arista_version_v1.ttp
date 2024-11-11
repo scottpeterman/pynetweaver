@@ -1,0 +1,2 @@
+Arista {{ model | prepend("Arista eos EOS ") }}
+Software image version: {{ os_version }}

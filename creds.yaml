@@ -1,0 +1,31 @@
+default:
+  ssh_username: "cisco"
+  ssh_password: "cisco"
+  enable_password: "cisco"
+  snmp_communities:
+    - "write"
+    - "write"
+
+arista:
+  username: "cisco"
+  password: "cisco"
+  enable: "cisco"
+  snmp_communities:
+    - "write"
+    - "write"
+
+aruba:
+  username: "admin"
+  password: "password"
+  enable: "enable"
+
+paloalto:
+  username: "admin"
+  password: "admin"
+
+snmpv3:
+  username: "snmpv3_user"
+  authproto: "sha"
+  authkey: "auth_key"
+  privproto: "aes128"
+  privkey: "priv_key"

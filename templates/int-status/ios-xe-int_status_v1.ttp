@@ -1,0 +1,1 @@
+{{ interface }}                       {{ phy_status }}             {{ lp_status }}       {{ description | _line_ | default('no_description') }}

@@ -1,0 +1,3 @@
+{{ vendor }} {{ platform | ORPHRASE }} Software, Version {{ os_version }}
+cisco {{ model }} (X86) processor (revision {{ rev }}) with {{ memory | ORPHRASE}} bytes of memory.
+Processor board ID {{ serial_number }}

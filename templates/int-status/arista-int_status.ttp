@@ -1,0 +1,5 @@
+Interface Status
+--------------------------------------------------------------------------------
+Port Name Status Vlan Duplex Speed Type
+--------------------------------------------------------------------------------
+{{ interface }} {{ description | ORPHRASE }} {{ status }} {{ vlan }} {{ duplex }} {{ speed }} {{ type | ORPHRASE }}

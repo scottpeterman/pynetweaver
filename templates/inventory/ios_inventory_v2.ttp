@@ -1,0 +1,3 @@
+NAME: {{ part_name | ORPHRASE | replaceall('"') }},  DESCR: {{ description | ORPHRASE |replaceall('"')  }}
+PID: {{ part_no }}            , VID:    , SN: {{ serial_number }}
+

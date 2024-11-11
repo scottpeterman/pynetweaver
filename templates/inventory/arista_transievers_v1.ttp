@@ -1,0 +1,1 @@
+  {{ port | isdigit }}    {{ transvr_mfg | ORPHRASE }}       {{ transvr_model }}    {{ serial_number }}    {{ rev }}

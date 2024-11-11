@@ -1,0 +1,6 @@
+Local Intf: {{ local_interface }}
+Port id: {{ remote_interface }}
+System Name: {{ device_id }}
+    IP: {{ ip_address | default('ip_not_found')}}
+Arista Networks {{ platform | ORPHRASE }}
+System Capabilities: {{ capabilities }}

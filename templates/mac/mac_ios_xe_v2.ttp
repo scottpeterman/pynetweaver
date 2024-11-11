@@ -1,0 +1,1 @@
+  {{ vlanid | isdigit }}    {{ mac_address }}    {{ ltype }}     {{ interface }}        {{ moves }}       {{ age | ORPHRASE }}

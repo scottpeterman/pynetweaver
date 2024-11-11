@@ -1,0 +1,2 @@
+NAME: "{{ part_name | ORPHRASE }}",  DESCR: "{{ part_desc | ORPHRASE }}"
+PID: {{ part_no }}       ,  VID: {{ vid }} ,  SN: {{ serial_number}}

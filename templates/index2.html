@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Device Search</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        form { max-width: 400px; margin: 0 auto; }
+        label, select, input { display: block; margin-bottom: 10px; width: 100%; }
+        button { padding: 10px; background-color: #007BFF; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+    </style>
+    <script>
+        function toggleInputField() {
+            const searchType = document.getElementById('search_type').value;
+            document.getElementById('query').style.display = searchType.includes('custom') ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+
+<h2>Device Search</h2>
+<form action="/search" method="get">
+    <label for="search_type">Select Query:</label>
+    <select id="search_type" name="search_type" onchange="toggleInputField()">
+        <option value="device_name">Device by Name</option>
+        <option value="device_ip">Device by IP</option>
+        <option value="device_mac">Device by MAC Address</option>
+        <option value="all_devices_ips">All Device Names and IPs</option>
+        <option value="device_system_info">Device System Info</option>
+        <option value="device_interfaces">Device Interfaces Status</option>
+        <option value="device_neighbors">Device Neighbors (CDP/LLDP)</option>
+        <option value="devices_by_os_version">Devices by OS Version</option>
+        <option value="device_inventory">Device Inventory Details</option>
+        <option value="jmespath_custom">Custom JMESPath Query</option>
+    </select>
+
+    <label for="query">Enter Query Value:</label>
+    <input type="text" id="query" name="query">
+
+    <button type="submit">Search</button>
+</form>
+
+{% if result %}
+    <h3>Search Result:</h3>
+    <pre>{{ result | tojson(indent=4) }}</pre>
+{% elif error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+
+</body>
+</html>

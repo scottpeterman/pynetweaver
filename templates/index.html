@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Device Search</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        form { max-width: 400px; margin: 0 auto; }
+        label, select, input { display: block; margin-bottom: 10px; width: 100%; }
+        button { padding: 10px; background-color: #007BFF; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+<h2>Device Search</h2>
+<form action="/search" method="get">
+    <label for="search_type">Search By:</label>
+    <select id="search_type" name="search_type">
+        <option value="device_name">Device Name</option>
+        <option value="ip_address">IP Address</option>
+        <option value="jmespath">Custom JMESPath Query</option>
+    </select>
+
+    <label for="query">Enter Query:</label>
+    <input type="text" id="query" name="query" required>
+
+    <button type="submit">Search</button>
+</form>
+
+{% if result %}
+    <h3>Search Result:</h3>
+    <pre>{{ result | tojson(indent=4) }}</pre>
+{% elif error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+
+</body>
+</html>

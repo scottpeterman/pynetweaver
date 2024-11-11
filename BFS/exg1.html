@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Network Crawler Tutorial</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+  button {
+    margin-right: 10px;
+    padding: 10px;
+  }
+  svg {
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 500px;
+  }
+  circle {
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<h2>Define Network Topology</h2>
+<table id="connectionsTable">
+  <tr>
+    <th>Node</th>
+    <th>Connected To</th>
+  </tr>
+  <tr>
+    <td><input type="text" placeholder="A" /></td>
+    <td><input type="text" placeholder="B,C" /></td>
+  </tr>
+</table>
+<button id="addRow">Add Row</button>
+<button id="generateGraph">Generate Graph</button>
+<button id="nextStep">Next Step</button>
+<button id="reset">Reset</button>
+
+<h2>Network Diagram</h2>
+<svg id="networkGraph"></svg>
+
+<script>
+let graph = {};
+let queue = [];
+let visited = {};
+let currentNode = null;
+
+// Add a new row for user input
+document.getElementById('addRow').addEventListener('click', () => {
+  const table = document.getElementById('connectionsTable');
+  const row = table.insertRow();
+  const nodeCell = row.insertCell(0);
+  const connectionsCell = row.insertCell(1);
+
+  nodeCell.innerHTML = '<input type="text" placeholder="Node" />';
+  connectionsCell.innerHTML = '<input type="text" placeholder="Connected Nodes" />';
+});
+
+// Parse the table input and generate the graph
+document.getElementById('generateGraph').addEventListener('click', () => {
+  const table = document.getElementById('connectionsTable');
+  graph = {};
+  queue = [];
+  visited = {};
+  currentNode = null;
+
+  // Parse table data
+  for (let i = 1; i < table.rows.length; i++) {
+    const node = table.rows[i].cells[0].querySelector('input').value.trim();
+    const connections = table.rows[i].cells[1].querySelector('input').value.trim().split(',');
+    if (node) {
+      graph[node] = connections.map(c => c.trim()).filter(c => c);
+    }
+  }
+
+  console.log('Graph:', graph);
+  resetGraph();
+  startTraversal();
+});
+
+// Step through the BFS traversal
+document.getElementById('nextStep').addEventListener('click', () => {
+  if (queue.length > 0) {
+    bfsStep();
+  }
+});
+
+// Reset the graph and restart traversal
+document.getElementById('reset').addEventListener('click', () => {
+  resetGraph();
+  startTraversal();
+});
+
+// Initialize the BFS traversal
+function startTraversal() {
+  const startNode = Object.keys(graph)[0];
+  if (startNode) {
+    queue.push(startNode);
+    visited[startNode] = true;
+    highlightNode(startNode, 'yellow');
+  }
+}
+
+// Perform one step of BFS traversal
+function bfsStep() {
+  if (queue.length === 0) return;
+
+  const node = queue.shift();
+  highlightNode(node, 'green');
+
+  const neighbors = graph[node] || [];
+  neighbors.forEach(neighbor => {
+    if (!visited[neighbor]) {
+      queue.push(neighbor);
+      visited[neighbor] = true;
+      highlightNode(neighbor, 'yellow');
+      highlightEdge(node, neighbor, 'yellow');
+    }
+  });
+}
+
+// Reset the SVG graph
+function resetGraph() {
+  const svg = document.getElementById('networkGraph');
+  svg.innerHTML = '';
+  renderGraph(graph);
+  queue = [];
+  visited = {};
+}
+
+// Render the network graph using SVG
+function renderGraph(graph) {
+  const svg = document.getElementById('networkGraph');
+  const nodes = Object.keys(graph);
+  const positions = {};
+  const radius = 20;
+  const centerX = svg.clientWidth / 2;
+  const centerY = svg.clientHeight / 2;
+  const angleStep = (2 * Math.PI) / nodes.length;
+
+  // Calculate node positions in a circular layout
+  nodes.forEach((node, index) => {
+    const angle = index * angleStep;
+    const x = centerX + 150 * Math.cos(angle);
+    const y = centerY + 150 * Math.sin(angle);
+    positions[node] = { x, y };
+
+    // Draw node
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('id', `node-${node}`);
+    circle.setAttribute('cx', x);
+    circle.setAttribute('cy', y);
+    circle.setAttribute('r', radius);
+    circle.setAttribute('fill', '#1e90ff');
+    svg.appendChild(circle);
+
+    // Add node label
+    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    text.setAttribute('x', x);
+    text.setAttribute('y', y + 5);
+    text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('fill', '#fff');
+    text.textContent = node;
+    svg.appendChild(text);
+  });
+
+  // Draw edges between nodes
+  nodes.forEach(node => {
+    const connections = graph[node] || [];
+    connections.forEach(conn => {
+      if (positions[conn]) {
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('id', `edge-${node}-${conn}`);
+        line.setAttribute('x1', positions[node].x);
+        line.setAttribute('y1', positions[node].y);
+        line.setAttribute('x2', positions[conn].x);
+        line.setAttribute('y2', positions[conn].y);
+        line.setAttribute('stroke', '#ccc');
+        line.setAttribute('stroke-width', '2');
+        svg.appendChild(line);
+      }
+    });
+  });
+}
+
+// Highlight a node with a specific color
+function highlightNode(node, color) {
+  const circle = document.getElementById(`node-${node}`);
+  if (circle) {
+    circle.setAttribute('fill', color);
+  }
+}
+
+// Highlight an edge with a specific color
+function highlightEdge(node1, node2, color) {
+  const edge = document.getElementById(`edge-${node1}-${node2}`);
+  if (edge) {
+    edge.setAttribute('stroke', color);
+  }
+}
+</script>
+
+</body>
+</html>

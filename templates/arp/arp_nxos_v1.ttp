@@ -1,0 +1,1 @@
+{{ ip_address | IP }}    {{ age }}  {{ mac_address | mac_eui }}  {{ interface }}   {{ flags | _line_  }}

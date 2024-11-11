@@ -1,0 +1,1 @@
+  {{ mac_address | mac_eui }}     {{ interface }}    {{ vlan_id | isdigit }}

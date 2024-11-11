@@ -1,0 +1,1 @@
+{{ primary }}  {{ vlan_id }}     {{ mac_address | MAC | | mac_eui }}   {{ ltype }}  {{ age }}         F      F    {{ interface }}

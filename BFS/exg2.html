@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detailed Network Crawler Tutorial</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+  button {
+    margin-right: 10px;
+    padding: 10px;
+  }
+  svg {
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 600px;
+  }
+  circle {
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<h2>Define Network Topology with Interfaces</h2>
+<table id="connectionsTable">
+  <tr>
+    <th>Node</th>
+    <th>Interface</th>
+    <th>Connected To</th>
+    <th>Remote Interface</th>
+  </tr>
+  <tr>
+    <td><input type="text" placeholder="Node A" /></td>
+    <td><input type="text" placeholder="Gig0/0" /></td>
+    <td><input type="text" placeholder="Node B" /></td>
+    <td><input type="text" placeholder="Gig0/1" /></td>
+  </tr>
+</table>
+<button id="addRow">Add Row</button>
+<button id="generateGraph">Generate Graph</button>
+<button id="nextStep">Next Step</button>
+<button id="reset">Reset</button>
+
+<h2>Network Diagram</h2>
+<svg id="networkGraph"></svg>
+
+<script>
+let graph = {};
+let queue = [];
+let visited = {};
+let currentNode = null;
+
+// Add a new row for user input
+document.getElementById('addRow').addEventListener('click', () => {
+  const table = document.getElementById('connectionsTable');
+  const row = table.insertRow();
+  row.insertCell(0).innerHTML = '<input type="text" placeholder="Node" />';
+  row.insertCell(1).innerHTML = '<input type="text" placeholder="Interface" />';
+  row.insertCell(2).innerHTML = '<input type="text" placeholder="Connected Node" />';
+  row.insertCell(3).innerHTML = '<input type="text" placeholder="Remote Interface" />';
+});
+
+// Parse the table input and generate the graph
+document.getElementById('generateGraph').addEventListener('click', () => {
+  const table = document.getElementById('connectionsTable');
+  graph = {};
+  queue = [];
+  visited = {};
+  currentNode = null;
+
+  // Parse table data
+  for (let i = 1; i < table.rows.length; i++) {
+    const node = table.rows[i].cells[0].querySelector('input').value.trim();
+    const interface = table.rows[i].cells[1].querySelector('input').value.trim();
+    const connectedNode = table.rows[i].cells[2].querySelector('input').value.trim();
+    const remoteInterface = table.rows[i].cells[3].querySelector('input').value.trim();
+
+    if (node && connectedNode) {
+      if (!graph[node]) graph[node] = [];
+      graph[node].push({ interface, connectedNode, remoteInterface });
+    }
+  }
+
+  console.log('Graph:', graph);
+  resetGraph();
+  startTraversal();
+});
+
+// Step through the BFS traversal
+document.getElementById('nextStep').addEventListener('click', () => {
+  if (queue.length > 0) {
+    bfsStep();
+  }
+});
+
+// Reset the graph and restart traversal
+document.getElementById('reset').addEventListener('click', () => {
+  resetGraph();
+  startTraversal();
+});
+
+// Initialize the BFS traversal
+function startTraversal() {
+  const startNode = Object.keys(graph)[0];
+  if (startNode) {
+    queue.push(startNode);
+    visited[startNode] = true;
+    highlightNode(startNode, 'yellow');
+  }
+}
+
+// Perform one step of BFS traversal
+function bfsStep() {
+  if (queue.length === 0) return;
+
+  const node = queue.shift();
+  highlightNode(node, 'green');
+
+  const neighbors = graph[node] || [];
+  neighbors.forEach(neighbor => {
+    const { interface, connectedNode, remoteInterface } = neighbor;
+    if (!visited[connectedNode]) {
+      queue.push(connectedNode);
+      visited[connectedNode] = true;
+      highlightNode(connectedNode, 'yellow');
+      highlightEdge(node, connectedNode, interface, remoteInterface);
+    }
+  });
+}
+
+// Reset the SVG graph
+function resetGraph() {
+  const svg = document.getElementById('networkGraph');
+  svg.innerHTML = '';
+  renderGraph(graph);
+  queue = [];
+  visited = {};
+}
+
+// Render the network graph using SVG
+function renderGraph(graph) {
+  const svg = document.getElementById('networkGraph');
+  const nodes = Object.keys(graph);
+  const positions = {};
+  const radius = 20;
+  const centerX = svg.clientWidth / 2;
+  const centerY = svg.clientHeight / 2;
+  const angleStep = (2 * Math.PI) / nodes.length;
+
+  // Calculate node positions in a circular layout
+  nodes.forEach((node, index) => {
+    const angle = index * angleStep;
+    const x = centerX + 200 * Math.cos(angle);
+    const y = centerY + 200 * Math.sin(angle);
+    positions[node] = { x, y };
+
+    // Draw node
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('id', `node-${node}`);
+    circle.setAttribute('cx', x);
+    circle.setAttribute('cy', y);
+    circle.setAttribute('r', radius);
+    circle.setAttribute('fill', '#1e90ff');
+    svg.appendChild(circle);
+
+    // Add node label
+    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    text.setAttribute('x', x);
+    text.setAttribute('y', y + 5);
+    text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('fill', '#fff');
+    text.textContent = node;
+    svg.appendChild(text);
+  });
+
+  // Draw edges with interface labels
+  nodes.forEach(node => {
+    const connections = graph[node] || [];
+    connections.forEach(({ interface, connectedNode, remoteInterface }) => {
+      if (positions[connectedNode]) {
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', positions[node].x);
+        line.setAttribute('y1', positions[node].y);
+        line.setAttribute('x2', positions[connectedNode].x);
+        line.setAttribute('y2', positions[connectedNode].y);
+        line.setAttribute('stroke', '#ccc');
+        line.setAttribute('stroke-width', '2');
+        svg.appendChild(line);
+
+        // Add interface label
+        const midX = (positions[node].x + positions[connectedNode].x) / 2;
+        const midY = (positions[node].y + positions[connectedNode].y) / 2;
+        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label.setAttribute('x', midX);
+        label.setAttribute('y', midY);
+        label.setAttribute('text-anchor', 'middle');
+        label.setAttribute('fill', '#000');
+        label.textContent = `${interface} ↔ ${remoteInterface}`;
+        svg.appendChild(label);
+      }
+    });
+  });
+}
+
+// Highlight a node with a specific color
+function highlightNode(node, color) {
+  const circle = document.getElementById(`node-${node}`);
+  if (circle) {
+    circle.setAttribute('fill', color);
+  }
+}
+
+// Highlight an edge with a specific color
+function highlightEdge(node1, node2, interface1, interface2) {
+  console.log(`Traversing ${node1} (${interface1}) ↔ ${node2} (${interface2})`);
+}
+</script>
+
+</body>
+</html>

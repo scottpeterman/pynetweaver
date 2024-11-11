@@ -1,0 +1,294 @@
+{
+  "usa1-rtr-1": {
+    "node_details": {
+      "ip": "172.16.101.100",
+      "platform": "ios"
+    },
+    "peers": {
+      "usa1-core-02": {
+        "ip": "172.16.101.2",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "Ethernet1/2",
+            "GigabitEthernet0/0"
+          ]
+        ]
+      },
+      "usa1-core-01": {
+        "ip": "172.16.101.1",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "Ethernet2/0",
+            "GigabitEthernet0/0"
+          ]
+        ]
+      },
+      "usa2-rtr-1": {
+        "ip": "172.16.1.102",
+        "platform": "Cisco 7206VXR",
+        "connections": [
+          [
+            "Ethernet1/1",
+            "Ethernet1/1"
+          ],
+          [
+            "Ethernet1/0",
+            "Ethernet1/0"
+          ]
+        ]
+      }
+    }
+  },
+  "usa1-core-02": {
+    "node_details": {
+      "ip": "172.16.101.2",
+      "platform": "ios"
+    },
+    "peers": {
+      "usa1-core-01": {
+        "ip": "172.16.101.1",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "GigabitEthernet0/1",
+            "GigabitEthernet0/1"
+          ]
+        ]
+      },
+      "usa1-access-02": {
+        "ip": "172.16.101.4",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "GigabitEthernet0/2",
+            "GigabitEthernet0/0"
+          ]
+        ]
+      },
+      "usa1-rtr-1": {
+        "ip": "172.16.128.1",
+        "platform": "Cisco 7206VXR",
+        "connections": [
+          [
+            "GigabitEthernet0/0",
+            "Ethernet1/2"
+          ]
+        ]
+      }
+    }
+  },
+  "usa1-core-01": {
+    "node_details": {
+      "ip": "172.16.101.1",
+      "platform": "ios"
+    },
+    "peers": {
+      "usa1-core-02": {
+        "ip": "172.16.101.2",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "GigabitEthernet0/1",
+            "GigabitEthernet0/1"
+          ]
+        ]
+      },
+      "usa1-access-02": {
+        "ip": "172.16.101.4",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "GigabitEthernet0/3",
+            "GigabitEthernet0/2"
+          ]
+        ]
+      },
+      "usa1-rtr-1": {
+        "ip": "172.16.101.100",
+        "platform": "Cisco 7206VXR",
+        "connections": [
+          [
+            "GigabitEthernet0/0",
+            "Ethernet2/0"
+          ]
+        ]
+      }
+    }
+  },
+  "usa2-rtr-1": {
+    "node_details": {
+      "ip": "172.16.1.102",
+      "platform": "ios"
+    },
+    "peers": {
+      "usa2-core-01": {
+        "ip": "172.16.201.1",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "Ethernet1/2",
+            "GigabitEthernet0/0"
+          ]
+        ]
+      },
+      "usa1-rtr-1": {
+        "ip": "172.16.1.101",
+        "platform": "Cisco 7206VXR",
+        "connections": [
+          [
+            "Ethernet1/1",
+            "Ethernet1/1"
+          ],
+          [
+            "Ethernet1/0",
+            "Ethernet1/0"
+          ]
+        ]
+      }
+    }
+  },
+  "usa1-access-02": {
+    "node_details": {
+      "ip": "172.16.101.4",
+      "platform": "ios"
+    },
+    "peers": {
+      "usa1-core-02": {
+        "ip": "172.16.101.2",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "GigabitEthernet0/0",
+            "GigabitEthernet0/2"
+          ]
+        ]
+      },
+      "usa1-core-01": {
+        "ip": "172.16.101.1",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "GigabitEthernet0/2",
+            "GigabitEthernet0/3"
+          ]
+        ]
+      }
+    }
+  },
+  "usa2-core-01": {
+    "node_details": {
+      "ip": "172.16.201.1",
+      "platform": "ios"
+    },
+    "peers": {
+      "usa2-core-02": {
+        "ip": "172.16.201.2",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "GigabitEthernet0/1",
+            "GigabitEthernet0/0"
+          ]
+        ]
+      },
+      "usa2-access-02": {
+        "ip": "172.16.201.4",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "GigabitEthernet0/3",
+            "GigabitEthernet0/0"
+          ]
+        ]
+      },
+      "usa2-access-01": {
+        "ip": "172.16.201.3",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "GigabitEthernet0/2",
+            "GigabitEthernet0/0"
+          ]
+        ]
+      },
+      "usa2-rtr-1": {
+        "ip": "172.16.201.100",
+        "platform": "Cisco 7206VXR",
+        "connections": [
+          [
+            "GigabitEthernet0/0",
+            "Ethernet1/2"
+          ]
+        ]
+      }
+    }
+  },
+  "usa2-core-02": {
+    "node_details": {
+      "ip": "172.16.201.2",
+      "platform": "ios"
+    },
+    "peers": {
+      "usa2-core-01": {
+        "ip": "172.16.201.1",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "GigabitEthernet0/0",
+            "GigabitEthernet0/1"
+          ]
+        ]
+      },
+      "usa2-access-02": {
+        "ip": "172.16.201.4",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "GigabitEthernet0/2",
+            "GigabitEthernet0/1"
+          ]
+        ]
+      },
+      "usa2-access-01": {
+        "ip": "172.16.201.3",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "GigabitEthernet0/1",
+            "GigabitEthernet0/1"
+          ]
+        ]
+      }
+    }
+  },
+  "usa2-access-02": {
+    "node_details": {
+      "ip": "172.16.201.4",
+      "platform": "ios"
+    },
+    "peers": {
+      "usa2-core-01": {
+        "ip": "172.16.201.1",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "GigabitEthernet0/0",
+            "GigabitEthernet0/3"
+          ]
+        ]
+      },
+      "usa2-core-02": {
+        "ip": "172.16.201.2",
+        "platform": "no_platform_info",
+        "connections": [
+          [
+            "GigabitEthernet0/1",
+            "GigabitEthernet0/2"
+          ]
+        ]
+      }
+    }
+  }
+}

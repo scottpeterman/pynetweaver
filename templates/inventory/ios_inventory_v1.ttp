@@ -1,0 +1,2 @@
+NAME: {{ part_name | ORPHRASE | replaceall('"') }},  DESCR: {{ description | ORPHRASE |replaceall('"')  }}
+PID: {{ part_no | ORPHRASE }}     ,  VID: {{ no }} ,  SN: {{ _line_ }}

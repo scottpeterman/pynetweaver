@@ -1,0 +1,6 @@
+  Device ID : {{ device_id | ORPHRASE }}
+  Platform     : {{ platform | _line_ }}
+  Device Port  : {{ remote_port | ORPHRASE }}
+  Port : {{ local_interface }}
+  Capability   : {{ capability | _line_ }}
+  Version      : {{ version | _line_ }}

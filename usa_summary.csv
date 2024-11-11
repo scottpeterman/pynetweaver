@@ -1,0 +1,8 @@
+Device ID,IP Address,SSH Status,SNMP Status,OS Type,Error Count,Discovery Time
+sw-a-c,172.16.101.21,True,True,arista,0,2024-11-10T20:54:19.334429
+usa1-core-01,172.16.101.1,True,True,ios,0,2024-11-10T20:54:44.785677
+sw-a-a-1,172.16.101.22,True,True,arista,0,2024-11-10T20:55:16.156870
+usa1-core-02,172.16.101.2,True,True,ios,0,2024-11-10T20:55:32.501920
+usa1-access-02,172.16.101.4,True,True,ios,0,2024-11-10T20:55:50.028145
+usa1-rtr-1,172.16.101.100,True,True,ios,0,2024-11-10T20:56:07.686122
+usa2-rtr-1,172.16.1.102,True,True,ios,0,2024-11-10T20:56:30.011277

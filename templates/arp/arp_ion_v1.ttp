@@ -1,0 +1,1 @@
+{{ ip_address }}             ether   {{ mac_address | mac_eui }}   C                     {{ interface }}

@@ -1,0 +1,4 @@
+Device ID:{{ device_id }}
+    IPv4 Address: {{ ip_address }}
+Platform: {{ platform | ORPHRASE }}, Capabilities: {{ capabilities | _line_ }}
+Interface: {{ local_interface }}, Port ID (outgoing port): {{ remote_interface }}
